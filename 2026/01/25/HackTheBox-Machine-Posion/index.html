@@ -6,36 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="title: HackTheBox Machine Posiondate: 2026-01-18 23:14:43tags: [pentest, nmap, port] 1. 信息搜集1.1 端口扫描进行基本的TCP半连接端口和服务扫描，只有22和80端口开放。 1nmap -sC -sV --min-rate&#x3D;10000 -p- -v -oN .&#x2F;nmap&#x2F;poison.nmap 10.129.">
+    <meta name="description" content="1. 信息搜集1.1 端口扫描进行基本的TCP半连接端口和服务扫描，只有22和80端口开放。 1nmap -sC -sV --min-rate&#x3D;10000 -p- -v -oN .&#x2F;nmap&#x2F;poison.nmap 10.129.1.254   1.2 Web站点枚举访问Web站点首页如下，是一个测试页面，可以输入PHP脚本名称进行测试。  尝试输入提供的脚本名称进行测试，首先发现关键的pwdba">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/index.html">
+<meta property="og:title" content="HackTheBox Machine Poison">
+<meta property="og:url" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="title: HackTheBox Machine Posiondate: 2026-01-18 23:14:43tags: [pentest, nmap, port] 1. 信息搜集1.1 端口扫描进行基本的TCP半连接端口和服务扫描，只有22和80端口开放。 1nmap -sC -sV --min-rate&#x3D;10000 -p- -v -oN .&#x2F;nmap&#x2F;poison.nmap 10.129.">
+<meta property="og:description" content="1. 信息搜集1.1 端口扫描进行基本的TCP半连接端口和服务扫描，只有22和80端口开放。 1nmap -sC -sV --min-rate&#x3D;10000 -p- -v -oN .&#x2F;nmap&#x2F;poison.nmap 10.129.1.254   1.2 Web站点枚举访问Web站点首页如下，是一个测试页面，可以输入PHP脚本名称进行测试。  尝试输入提供的脚本名称进行测试，首先发现关键的pwdba">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769347566533.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769347673564.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769347745744.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769347946092.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769348014174.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769347946092.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769349503510.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769349875819.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769350192070.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769350302979.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769350364145.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769350442068.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769350778879.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769349875819.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769351457566.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769351517517.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769352085503.png">
-<meta property="og:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769352162500.png">
-<meta property="article:published_time" content="2026-01-18T15:14:43.983Z">
-<meta property="article:modified_time" content="2026-01-25T14:42:59.973Z">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769347566533.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769347673564.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769347745744.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769347946092.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769348014174.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769347946092.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769349503510.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769349875819.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769350192070.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769350302979.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769350364145.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769350442068.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769350778879.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769349875819.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769351457566.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769351517517.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769352085503.png">
+<meta property="og:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769352162500.png">
+<meta property="article:published_time" content="2026-01-25T14:46:17.000Z">
+<meta property="article:modified_time" content="2026-01-25T14:49:06.869Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="base64">
+<meta property="article:tag" content="freebsd">
+<meta property="article:tag" content="lfi">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="vnc">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2026/01/18/HackTheBox-Machine-Posion/1769347566533.png">
+<meta name="twitter:image" content="http://example.com/2026/01/25/HackTheBox-Machine-Posion/1769347566533.png">
     
     
       
@@ -55,7 +60,7 @@
       
     
     <!-- title -->
-    <title>Hexo</title>
+    <title>HackTheBox Machine Poison</title>
     <!-- async scripts -->
     <!-- Google Analytics -->
 
@@ -112,17 +117,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/01/18/HackTheBox-Machine-Posion/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2026/01/18/HackTheBox-Machine-Posion/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&t="><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/01/25/HackTheBox-Machine-Posion/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&text=HackTheBox Machine Poison"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&title=HackTheBox Machine Poison"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&is_video=false&description=HackTheBox Machine Poison"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox Machine Poison&body=Check out this article: http://example.com/2026/01/25/HackTheBox-Machine-Posion/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&title=HackTheBox Machine Poison"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&title=HackTheBox Machine Poison"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&title=HackTheBox Machine Poison"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&title=HackTheBox Machine Poison"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&name=HackTheBox Machine Poison&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&t=HackTheBox Machine Poison"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -142,7 +147,7 @@
   <header>
     
     <h1 class="posttitle p-name" itemprop="name headline">
-        
+        HackTheBox Machine Poison
     </h1>
 
 
@@ -154,7 +159,7 @@
       
     <div class="postdate">
       
-        <time datetime="2026-01-18T15:14:43.983Z" class="dt-published" itemprop="datePublished">2026-01-18</time>
+        <time datetime="2026-01-25T14:46:17.000Z" class="dt-published" itemprop="datePublished">2026-01-25</time>
         
       
     </div>
@@ -163,67 +168,71 @@
       
 
       
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/base64/" rel="tag">base64</a>, <a class="p-category" href="/tags/freebsd/" rel="tag">freebsd</a>, <a class="p-category" href="/tags/lfi/" rel="tag">lfi</a>, <a class="p-category" href="/tags/ssh/" rel="tag">ssh</a>, <a class="p-category" href="/tags/vnc/" rel="tag">vnc</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content e-content" itemprop="articleBody">
-    <p>title: HackTheBox Machine Posion<br>date: 2026-01-18 23:14:43<br>tags: [pentest, nmap, port]</p>
-<h1 id="1-信息搜集"><a href="#1-信息搜集" class="headerlink" title="1. 信息搜集"></a>1. 信息搜集</h1><h2 id="1-1-端口扫描"><a href="#1-1-端口扫描" class="headerlink" title="1.1 端口扫描"></a>1.1 端口扫描</h2><p>进行基本的TCP半连接端口和服务扫描，只有22和80端口开放。</p>
+    <h1 id="1-信息搜集"><a href="#1-信息搜集" class="headerlink" title="1. 信息搜集"></a>1. 信息搜集</h1><h2 id="1-1-端口扫描"><a href="#1-1-端口扫描" class="headerlink" title="1.1 端口扫描"></a>1.1 端口扫描</h2><p>进行基本的TCP半连接端口和服务扫描，只有22和80端口开放。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sC -sV --min-rate=10000 -p- -v -oN ./nmap/poison.nmap 10.129.1.254</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769347566533.png" alt="1769347566533"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769347566533.png" alt="1769347566533"></p>
 <h2 id="1-2-Web站点枚举"><a href="#1-2-Web站点枚举" class="headerlink" title="1.2 Web站点枚举"></a>1.2 Web站点枚举</h2><p>访问Web站点首页如下，是一个测试页面，可以输入PHP脚本名称进行测试。</p>
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769347673564.png" alt="1769347673564"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769347673564.png" alt="1769347673564"></p>
 <p>尝试输入提供的脚本名称进行测试，首先发现关键的pwdbackup.txt文件（似乎是密码备份文件）。</p>
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769347745744.png" alt="1769347745744"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769347745744.png" alt="1769347745744"></p>
 <p>并且这儿存在文件包含漏洞。</p>
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769347946092.png" alt="1769347946092"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769347946092.png" alt="1769347946092"></p>
 <h1 id="2-初始立足"><a href="#2-初始立足" class="headerlink" title="2. 初始立足"></a>2. 初始立足</h1><h2 id="2-1-密码破解"><a href="#2-1-密码破解" class="headerlink" title="2.1 密码破解"></a>2.1 密码破解</h2><p>读取pwdbackup.txt文件得到密码密文。</p>
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769348014174.png" alt="1769348014174"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769348014174.png" alt="1769348014174"></p>
 <p>根据提示写解密脚本进行多重解密，需要处理换行问题。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line"></span><br><span class="line">def read_ciphertext():</span><br><span class="line">    &quot;&quot;&quot;读取 data.txt 密文&quot;&quot;&quot;</span><br><span class="line">    with open(&#x27;data.txt&#x27;, &#x27;r&#x27;) as f:</span><br><span class="line">        ciphertext = f.read()</span><br><span class="line">    return ciphertext</span><br><span class="line"></span><br><span class="line">def decode_base64(data):</span><br><span class="line">    &quot;&quot;&quot;将输入整合为1行进行base64解码&quot;&quot;&quot;</span><br><span class="line">    single_line = &#x27;&#x27;.join(data.split())</span><br><span class="line">    decoded = base64.b64decode(single_line)</span><br><span class="line">    return decoded</span><br><span class="line"></span><br><span class="line">def loop_decode(data):</span><br><span class="line">    &quot;&quot;&quot;循环调用decode_base64进行解密，直到解密失败&quot;&quot;&quot;</span><br><span class="line">    current_data = data</span><br><span class="line">    decode_count = 0</span><br><span class="line">    </span><br><span class="line">    while True:</span><br><span class="line">        try:</span><br><span class="line">            if isinstance(current_data, bytes):</span><br><span class="line">                current_data = current_data.decode(&#x27;utf-8&#x27;)</span><br><span class="line">            </span><br><span class="line">            decoded = decode_base64(current_data)</span><br><span class="line">            current_data = decoded</span><br><span class="line">            decode_count += 1</span><br><span class="line">        except Exception as e:</span><br><span class="line">            break</span><br><span class="line">    </span><br><span class="line">    return current_data</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    ciphertext = read_ciphertext()</span><br><span class="line">    result = loop_decode(ciphertext)</span><br><span class="line">    if isinstance(result, bytes):</span><br><span class="line">        print(result.decode(&#x27;utf-8&#x27;))</span><br><span class="line">    else:</span><br><span class="line">        print(result)</span><br></pre></td></tr></table></figure>
 
 <p>现在得到明文密码为<code>Charix!2#4%6&amp;8(0</code>。</p>
 <h2 id="2-2-SSH连接"><a href="#2-2-SSH连接" class="headerlink" title="2.2 SSH连接"></a>2.2 SSH连接</h2><p>结合上面文件包含得到的用户<code>charix</code>，尝试进行连接。</p>
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769347946092.png" alt="1769347946092"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769347946092.png" alt="1769347946092"></p>
 <p>利用SSH进行连接，连接成功。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh charix@10.129.1.254</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769349503510.png" alt="1769349503510"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769349503510.png" alt="1769349503510"></p>
 <h1 id="3-权限提升"><a href="#3-权限提升" class="headerlink" title="3. 权限提升"></a>3. 权限提升</h1><h2 id="3-1-密文解密"><a href="#3-1-密文解密" class="headerlink" title="3.1 密文解密"></a>3.1 密文解密</h2><p>查看网络监听状况，发现5801、5901端口在监听，这两个端口是VNC的控制与连接端口。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an -p tcp</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769349875819.png" alt="1769349875819"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769349875819.png" alt="1769349875819"></p>
 <p>在charix用户家目录下，看到了secret.zip压缩包。</p>
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769350192070.png" alt="1769350192070"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769350192070.png" alt="1769350192070"></p>
 <p>用scp远程传输到本地。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp charix@10.129.1.254:/home/charix/secret.zip .</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769350302979.png" alt="1769350302979"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769350302979.png" alt="1769350302979"></p>
 <p>尝试解压发现需要密码，用charix用户密码解密成功。</p>
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769350364145.png" alt="1769350364145"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769350364145.png" alt="1769350364145"></p>
 <p>查看文件，该文件为16进制的数据。</p>
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769350442068.png" alt="1769350442068"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769350442068.png" alt="1769350442068"></p>
 <p>用<a target="_blank" rel="noopener" href="https://github.com/jeroennijhof/vncpwd">vncpwd</a>工具进行解密，得到密码明文<code>VNCP@$$!</code>。</p>
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769350778879.png" alt="1769350778879"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769350778879.png" alt="1769350778879"></p>
 <h2 id="3-2-VNC连接"><a href="#3-2-VNC连接" class="headerlink" title="3.2 VNC连接"></a>3.2 VNC连接</h2><p>目标机器的VNC服务只能本地连接。</p>
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769349875819.png" alt="1769349875819"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769349875819.png" alt="1769349875819"></p>
 <p>做一个动态端口转发，将本地的9999端口流量通过SSH协议转发到目标机器本地。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -CNf -D 9999 charix@10.129.1.254</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769351457566.png" alt="1769351457566"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769351457566.png" alt="1769351457566"></p>
 <p>然后通过proxychains4.conf文件进行代理配置。</p>
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769351517517.png" alt="1769351517517"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769351517517.png" alt="1769351517517"></p>
 <p>之后通过本地的9999端口socks代理进行vnc连接。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains -q vncviewer 127.0.0.1:5901</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769352085503.png" alt="1769352085503"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769352085503.png" alt="1769352085503"></p>
 <p>或者不用解密，直接用secret密文进行连接。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains -q vncviewer -passwd secret 127.0.0.1:5901</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2026/01/18/HackTheBox-Machine-Posion/1769352162500.png" alt="1769352162500"></p>
+<p><img src="/2026/01/25/HackTheBox-Machine-Posion/1769352162500.png" alt="1769352162500"></p>
 
   </div>
 </article>
@@ -257,17 +266,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/01/18/HackTheBox-Machine-Posion/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://example.com/2026/01/18/HackTheBox-Machine-Posion/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/01/18/HackTheBox-Machine-Posion/&t="><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/01/25/HackTheBox-Machine-Posion/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&text=HackTheBox Machine Poison"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&title=HackTheBox Machine Poison"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&is_video=false&description=HackTheBox Machine Poison"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox Machine Poison&body=Check out this article: http://example.com/2026/01/25/HackTheBox-Machine-Posion/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&title=HackTheBox Machine Poison"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&title=HackTheBox Machine Poison"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&title=HackTheBox Machine Poison"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&title=HackTheBox Machine Poison"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&name=HackTheBox Machine Poison&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/01/25/HackTheBox-Machine-Posion/&t=HackTheBox Machine Poison"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
