@@ -483,14 +483,13 @@ body {
   font-weight: 400;
   font-size: 14px;
   font-family: "Menlo", "Meslo LG", monospace;
-  line-height: 0.5;
+  line-height: 1.725;
   text-rendering: geometricPrecision;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
 .content {
   position: relative;
-  display: flex;
   flex-direction: column;
   min-height: 100%;
   overflow-wrap: break-word;
