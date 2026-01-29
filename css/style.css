@@ -347,75 +347,75 @@ body h3 {
   font-weight: bold;
   font-size: 0.9rem;
 }
-margin-bottom: 1rem h4,
-margin-bottom: 1rem h5,
-margin-bottom: 1rem h6 {
+body h4,
+body h5,
+body h6 {
   display: inline;
   text-decoration: none;
   color: #ccc;
   font-weight: bold;
   font-size: 0.9rem;
 }
-margin-bottom: 1rem h3,
-margin-bottom: 1rem h4,
-margin-bottom: 1rem h5,
-margin-bottom: 1rem h6 {
+body h3,
+body h4,
+body h5,
+body h6 {
   margin-top: 0.9rem;
   margin-bottom: 0.5rem;
 }
-margin-bottom: 1rem hr {
+body hr {
   border: 0.5px dashed #ccc;
   opacity: 0.5;
   margin: 0;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-margin-bottom: 1rem strong {
+body strong {
   font-weight: bold;
 }
-margin-bottom: 1rem em,
-margin-bottom: 1rem cite {
+body em,
+body cite {
   font-style: italic;
 }
-margin-bottom: 1rem sup,
-margin-bottom: 1rem sub {
+body sup,
+body sub {
   position: relative;
   vertical-align: baseline;
   font-size: 0.75em;
   line-height: 0;
 }
-margin-bottom: 1rem sup {
+body sup {
   top: -0.5em;
 }
-margin-bottom: 1rem sub {
+body sub {
   bottom: -0.2em;
 }
-margin-bottom: 1rem small {
+body small {
   font-size: 0.85em;
 }
-margin-bottom: 1rem acronym,
-margin-bottom: 1rem abbr {
+body acronym,
+body abbr {
   border-bottom: 1px dotted;
 }
-margin-bottom: 1rem ul,
-margin-bottom: 1rem ol,
-margin-bottom: 1rem dl {
+body ul,
+body ol,
+body dl {
   line-height: 1.725;
 }
-margin-bottom: 1rem ul ul,
-margin-bottom: 1rem ol ul,
-margin-bottom: 1rem ul ol,
-margin-bottom: 1rem ol ol {
+body ul ul,
+body ol ul,
+body ul ol,
+body ol ol {
   margin-top: 0;
   margin-bottom: 0;
 }
-margin-bottom: 1rem ol {
+body ol {
   list-style: decimal;
 }
-margin-bottom: 1rem dt {
+body dt {
   font-weight: bold;
 }
-margin-bottom: 1rem table {
+body table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
@@ -423,14 +423,14 @@ margin-bottom: 1rem table {
   overflow: auto;
   display: block;
 }
-margin-bottom: 1rem th {
+body th {
   padding: 8px;
   border-bottom: 1px dashed #908d8d;
   color: #eee;
   font-weight: bold;
   font-size: 13px;
 }
-margin-bottom: 1rem td {
+body td {
   padding: 0 8px;
   border-bottom: none;
 }
