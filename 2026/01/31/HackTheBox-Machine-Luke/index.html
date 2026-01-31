@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="1. 信息搜集1.1 端口扫描对目标机器做端口和服务扫描。 发现21&#x2F;FTP服务可以匿名登录，HTTP服务开放了3个相关端口。 1nmap -sC -sV --min-rate&#x3D;10000 -p- -v -oN .&#x2F;nmap&#x2F;luke.nmap 10.129.96.55   1.2 匿名登录FTP匿名登录，将其中的文件下载到本地。 1ftp 10.129.96.55   文件内容为开放了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox Machine Luke">
+<meta property="og:url" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. 信息搜集1.1 端口扫描对目标机器做端口和服务扫描。 发现21&#x2F;FTP服务可以匿名登录，HTTP服务开放了3个相关端口。 1nmap -sC -sV --min-rate&#x3D;10000 -p- -v -oN .&#x2F;nmap&#x2F;luke.nmap 10.129.96.55   1.2 匿名登录FTP匿名登录，将其中的文件下载到本地。 1ftp 10.129.96.55   文件内容为开放了">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769851129538.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769851180623.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769851199628.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769851231960.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769851499536.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769851556455.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769851583195.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769853353650.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769854751219.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769852280918.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769852892473.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769853093344.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769853333452.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769853485403.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769853599195.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769854297799.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769854371081.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769854483702.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769854554008.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769854657396.png">
+<meta property="og:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769854594365.png">
+<meta property="article:published_time" content="2026-01-31T09:09:07.000Z">
+<meta property="article:modified_time" content="2026-01-31T10:20:39.421Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="api">
+<meta property="article:tag" content="freebsd">
+<meta property="article:tag" content="ftp">
+<meta property="article:tag" content="fuzz">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2026/01/31/HackTheBox-Machine-Luke/1769851129538.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>HackTheBox Machine Luke</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2026/01/29/HackTheBox-Machine-Poison/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/01/31/HackTheBox-Machine-Luke/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&text=HackTheBox Machine Luke"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&title=HackTheBox Machine Luke"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&is_video=false&description=HackTheBox Machine Luke"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox Machine Luke&body=Check out this article: http://example.com/2026/01/31/HackTheBox-Machine-Luke/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&title=HackTheBox Machine Luke"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&title=HackTheBox Machine Luke"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&title=HackTheBox Machine Luke"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&title=HackTheBox Machine Luke"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&name=HackTheBox Machine Luke&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&t=HackTheBox Machine Luke"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">1. 信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 端口扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%8C%BF%E5%90%8D%E7%99%BB%E5%BD%95"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 匿名登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Web%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 Web枚举</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Web%E6%B8%97%E9%80%8F"><span class="toc-number">2.</span> <span class="toc-text">2. Web渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-API%E6%B5%8B%E8%AF%95"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 API测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%87%AD%E8%AF%81%E6%B3%84%E9%9C%B2"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 凭证泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%90%8E%E5%8F%B0%E7%99%BB%E5%BD%95"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 后台登录</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox Machine Luke
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-01-31T09:09:07.000Z" class="dt-published" itemprop="datePublished">2026-01-31</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/api/" rel="tag">api</a>, <a class="p-category" href="/tags/freebsd/" rel="tag">freebsd</a>, <a class="p-category" href="/tags/ftp/" rel="tag">ftp</a>, <a class="p-category" href="/tags/fuzz/" rel="tag">fuzz</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="1-信息搜集"><a href="#1-信息搜集" class="headerlink" title="1. 信息搜集"></a>1. 信息搜集</h2><h3 id="1-1-端口扫描"><a href="#1-1-端口扫描" class="headerlink" title="1.1 端口扫描"></a>1.1 端口扫描</h3><p>对目标机器做端口和服务扫描。</p>
+<p>发现21&#x2F;FTP服务可以匿名登录，HTTP服务开放了3个相关端口。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sC -sV --min-rate=10000 -p- -v -oN ./nmap/luke.nmap 10.129.96.55</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769851129538.png" alt="1769851129538"></p>
+<h3 id="1-2-匿名登录"><a href="#1-2-匿名登录" class="headerlink" title="1.2 匿名登录"></a>1.2 匿名登录</h3><p>FTP匿名登录，将其中的文件下载到本地。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp 10.129.96.55</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769851180623.png" alt="1769851180623"></p>
+<p>文件内容为开放了一个Web站点用于学习，后续因为安全策略会关闭。</p>
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769851199628.png" alt="1769851199628"></p>
+<h3 id="1-3-Web枚举"><a href="#1-3-Web枚举" class="headerlink" title="1.3 Web枚举"></a>1.3 Web枚举</h3><p>80端口的Web站点是一个欢迎页面。</p>
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769851231960.png" alt="1769851231960"></p>
+<p>用dirsearch进行目录扫描，发现了一些敏感文件路径。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u http://10.129.96.55/ -x 403</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769851499536.png" alt="1769851499536"></p>
+<p>访问config.php返回MySQL数据库的连接用户和密码：<code>root:Zk6heYCyv6ZE9Xcg</code>。</p>
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769851556455.png" alt="1769851556455"></p>
+<p>3000端口的Web站点从返回值来看似乎是个API接口。</p>
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769851583195.png" alt="1769851583195"></p>
+<p>测试API接口，首先需要gobuster指定字典进行路径扫描。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gobuster dir -u http://10.129.96.55:3000/ -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories-lowercase.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769853353650.png" alt="1769853353650"></p>
+<p>API接口通常为多层路由设计（比如&#x2F;users&#x2F;&lt;username&gt;等），对&#x2F;users&#x2F;路径进行二次扫描。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gobuster dir -u http://10.129.96.55:3000/users/ -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories-lowercase.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769854751219.png" alt="1769854751219"></p>
+<p>8000端口的Web站点是Ajenti系统管理后台。</p>
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769852280918.png" alt="1769852280918"></p>
+<h2 id="2-Web渗透"><a href="#2-Web渗透" class="headerlink" title="2. Web渗透"></a>2. Web渗透</h2><h3 id="2-1-API测试"><a href="#2-1-API测试" class="headerlink" title="2.1 API测试"></a>2.1 API测试</h3><p>根据上面的扫描结果，对&#x2F;login、&#x2F;users、&#x2F;users&#x2F;admin接口进行测试。</p>
+<p>对了&#x2F;login登录接口，需要猜测传参方式以及请求参数，根据下面的返回包判断出正确的传参方式和请求参数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s -X POST http://10.129.96.55:3000/login -d &quot;username=admin&amp;password=123456&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769852892473.png" alt="1769852892473"></p>
+<p>判断出来传参方式已经请求参数之后，就可以测试用户凭证了，弱口令或者复用上面的MySQL凭证。</p>
+<p>最终测试出来的用户凭证为<code>admin:Zk6heYCyv6ZE9Xcg</code>，返回值中存在一个token用于身份认证。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s -X POST http://10.129.96.55:3000/login -d &quot;username=admin&amp;password=Zk6heYCyv6ZE9Xcg&quot; | jq</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769853093344.png" alt="1769853093344"></p>
+<p>继续测试&#x2F;users接口，带上token认证头，返回一些用户信息。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s http://10.129.96.55:3000/users -H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzY5ODUzMDcxLCJleHAiOjE3Njk5Mzk0NzF9.0_zjO2h_Qnh1gpo4GHiq0ZgsyGfHMctxZuFzh3NCuxs&quot; | jq</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769853333452.png" alt="1769853333452"></p>
+<p>已知接口&#x2F;users&#x2F;admin是存在的，测试接口设计是否是&#x2F;users&#x2F;&lt;username&gt;的形式。</p>
+<p>根据测试结果，不同用户名作为路径返回值相同，所以猜测的路由方式正确。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s http://10.129.96.55:3000/users/&lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769853485403.png" alt="1769853485403"></p>
+<p>携带token认证头继续访问&#x2F;users&#x2F;&lt;username&gt;接口。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s http://10.129.96.55:3000/users/&lt;username&gt; -H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzY5ODUzMDcxLCJleHAiOjE3Njk5Mzk0NzF9.0_zjO2h_Qnh1gpo4GHiq0ZgsyGfHMctxZuFzh3NCuxs&quot; | jq</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769853599195.png" alt="1769853599195"></p>
+<p>记录得到的4组凭据，方便后续使用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Admin  :  WX5b7)&gt;/rp$U)FW</span><br><span class="line">Derry  :  rZ86wwLvx7jUxtch</span><br><span class="line">Yuri   :  bet@tester87</span><br><span class="line">Dory   :  5y:!xa=ybfe)/QD</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-凭证泄露"><a href="#2-2-凭证泄露" class="headerlink" title="2.2 凭证泄露"></a>2.2 凭证泄露</h3><p>访问80端口的&#x2F;management&#x2F;路由，使用上面的凭证测试。</p>
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769854297799.png" alt="1769854297799"></p>
+<p>使用凭据<code>Derry:rZ86wwLvx7jUxtch</code>认证成功。</p>
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769854371081.png" alt="1769854371081"></p>
+<p>访问config.json文件，发现一组新的凭证：<code>root:KpMasng6S5EtTy9Z</code>。</p>
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769854483702.png" alt="1769854483702"></p>
+<h3 id="2-3-后台登录"><a href="#2-3-后台登录" class="headerlink" title="2.3 后台登录"></a>2.3 后台登录</h3><p>用上面config.json中发现的凭证登录8000端口的Ajenti后台，登录成功。</p>
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769854554008.png" alt="1769854554008"></p>
+<p>可以通过文件管理器查看系统文件。</p>
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769854657396.png" alt="1769854657396"></p>
+<p>也可以利用后台打开终端直接执行命令。</p>
+<p><img src="/2026/01/31/HackTheBox-Machine-Luke/1769854594365.png" alt="1769854594365"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">1. 信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 端口扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%8C%BF%E5%90%8D%E7%99%BB%E5%BD%95"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 匿名登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-Web%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 Web枚举</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Web%E6%B8%97%E9%80%8F"><span class="toc-number">2.</span> <span class="toc-text">2. Web渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-API%E6%B5%8B%E8%AF%95"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 API测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%87%AD%E8%AF%81%E6%B3%84%E9%9C%B2"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 凭证泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%90%8E%E5%8F%B0%E7%99%BB%E5%BD%95"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 后台登录</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/01/31/HackTheBox-Machine-Luke/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&text=HackTheBox Machine Luke"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&title=HackTheBox Machine Luke"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&is_video=false&description=HackTheBox Machine Luke"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox Machine Luke&body=Check out this article: http://example.com/2026/01/31/HackTheBox-Machine-Luke/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&title=HackTheBox Machine Luke"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&title=HackTheBox Machine Luke"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&title=HackTheBox Machine Luke"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&title=HackTheBox Machine Luke"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&name=HackTheBox Machine Luke&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/01/31/HackTheBox-Machine-Luke/&t=HackTheBox Machine Luke"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2026
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
